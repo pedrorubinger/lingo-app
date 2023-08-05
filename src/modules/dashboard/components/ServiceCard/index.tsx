@@ -27,8 +27,6 @@ interface Props {
 }
 
 export const ServiceCard: React.FC<Props> = ({ status, sub, title, width }) => {
-  const isActive = status === ServiceCardStatus.ACTIVE
-
   const getTitleColor = (): ColorName => {
     switch (status) {
       case ServiceCardStatus.ACTIVE:
