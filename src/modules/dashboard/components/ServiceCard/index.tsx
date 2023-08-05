@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { StyleSheet } from "react-native"
 
 import { Theme } from "@styles/index"
@@ -33,13 +33,29 @@ export const ServiceCard: React.FC<Props> = ({
   title,
   width,
 }) => {
+  const [currentStatus, setCurrentStatus] = useState<ServiceCardStatus>(status)
+  const isDisabled = currentStatus === ServiceCardStatus.DISABLED
+
+  const onPressCard = () => {
+    if (currentStatus === ServiceCardStatus.DEFAULT)
+      setCurrentStatus(ServiceCardStatus.ACTIVE)
+    if (currentStatus === ServiceCardStatus.ACTIVE)
+      setCurrentStatus(ServiceCardStatus.DEFAULT)
+  }
+
   return (
-    <TouchableBox style={shadow.box} status={status} width={width}>
-      <Typography color={getTitleColor(status)} font="md4">
+    <TouchableBox
+      style={shadow.box}
+      disabled={isDisabled}
+      status={currentStatus}
+      width={width}
+      onPress={onPressCard}
+    >
+      <Typography color={getTitleColor(currentStatus)} font="md4">
         {title}
       </Typography>
 
-      <Typography color={getSubColor(status)} font="md1">
+      <Typography color={getSubColor(currentStatus)} font="md1">
         {sub}
       </Typography>
     </TouchableBox>
