@@ -1,5 +1,4 @@
 import React from "react"
-import { Text, View } from "react-native"
 import { StatusBar } from "expo-status-bar"
 import { useFonts } from "expo-font"
 import { ThemeProvider } from "styled-components/native"
