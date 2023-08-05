@@ -1,7 +1,7 @@
 export const Fonts = {
   h1: { fontFamily: "Roboto-Bold", fontSize: 32 },
   h2: { fontFamily: "Roboto-Bold", fontSize: 24 },
-  h3: { fontFamily: "Roboto-Bold", fontSize: 22 },
+  h3: { fontFamily: "Roboto-Medium", fontSize: 22 },
   h4: { fontFamily: "Roboto-Regular", fontSize: 22 },
   h5: { fontFamily: "Roboto-Regular", fontSize: 19 },
   h6: { fontFamily: "Roboto-Regular", fontSize: 16 },
