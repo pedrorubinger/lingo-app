@@ -10,7 +10,7 @@ export const serviceCards: ServiceCardData[] = [
   },
   {
     id: 2,
-    title: "Spell checker",
+    title: "Text inspector",
     sub: "Available soon",
     width: "48%",
     status: ServiceCardStatus.DISABLED,
