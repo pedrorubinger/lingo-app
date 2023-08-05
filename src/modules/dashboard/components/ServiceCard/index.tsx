@@ -3,8 +3,9 @@ import { StyleSheet } from "react-native"
 
 import { Theme, ColorName } from "@styles/index"
 import { Typography } from "@components/Typography"
-import { Box } from "@modules/dashboard/components/ServiceCard/styles"
+import { TouchableBox } from "@modules/dashboard/components/ServiceCard/styles"
 import { ServiceCardStatus } from "@interfaces/ServiceCard"
+import { getSubColor, getTitleColor } from "@modules/dashboard/utils"
 
 const { colors } = Theme
 
@@ -26,38 +27,21 @@ interface Props {
   status?: ServiceCardStatus
 }
 
-export const ServiceCard: React.FC<Props> = ({ status, sub, title, width }) => {
-  const getTitleColor = (): ColorName => {
-    switch (status) {
-      case ServiceCardStatus.ACTIVE:
-        return "white" as ColorName
-      case ServiceCardStatus.DISABLED:
-        return "white" as ColorName
-      default:
-        return "grey700" as ColorName
-    }
-  }
-
-  const getSubColor = (): ColorName => {
-    switch (status) {
-      case ServiceCardStatus.ACTIVE:
-        return "white" as ColorName
-      case ServiceCardStatus.DISABLED:
-        return "white" as ColorName
-      default:
-        return "grey500" as ColorName
-    }
-  }
-
+export const ServiceCard: React.FC<Props> = ({
+  status = ServiceCardStatus.DEFAULT,
+  sub,
+  title,
+  width,
+}) => {
   return (
-    <Box style={shadow.box} status={status} width={width}>
-      <Typography color={getTitleColor()} font="md4">
+    <TouchableBox style={shadow.box} status={status} width={width}>
+      <Typography color={getTitleColor(status)} font="md4">
         {title}
       </Typography>
 
-      <Typography color={getSubColor()} font="md1">
+      <Typography color={getSubColor(status)} font="md1">
         {sub}
       </Typography>
-    </Box>
+    </TouchableBox>
   )
 }

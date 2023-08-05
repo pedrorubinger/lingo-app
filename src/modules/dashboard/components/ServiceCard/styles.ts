@@ -6,7 +6,7 @@ import styled from "styled-components/native"
 
 const { colors, spacing } = Theme
 
-interface BoxProps {
+interface TouchableBoxProps {
   status?: ServiceCardStatus
   width?: string
 }
@@ -24,7 +24,7 @@ const getBackground = (status: ServiceCardStatus): ColorValue => {
 
 const boxYPadding = spacing.lg + 2
 
-export const Box = styled.View<BoxProps>`
+export const TouchableBox = styled.TouchableOpacity<TouchableBoxProps>`
   width: ${({ width = "auto" }) => width};
   background-color: ${({ status = ServiceCardStatus.DEFAULT }) =>
     getBackground(status)};
