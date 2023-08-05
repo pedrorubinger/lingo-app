@@ -16,7 +16,7 @@ const getBackground = (status: ServiceCardStatus): ColorValue => {
     case ServiceCardStatus.ACTIVE:
       return colors.primary
     case ServiceCardStatus.DISABLED:
-      return colors.grey300
+      return colors.grey500
     default:
       return colors.white
   }
@@ -27,7 +27,7 @@ export const Box = styled.View<BoxProps>`
   background-color: ${({ status = ServiceCardStatus.DEFAULT }) =>
     getBackground(status)};
   opacity: ${({ status = ServiceCardStatus.DEFAULT }) =>
-    status === ServiceCardStatus.DISABLED ? 0.7 : 1};
+    status === ServiceCardStatus.DISABLED ? 0.4 : 1};
 
   border-radius: 30px;
   padding: ${spacing.lg}px ${spacing.md}px ${spacing.lg}px ${spacing.lg}px;
