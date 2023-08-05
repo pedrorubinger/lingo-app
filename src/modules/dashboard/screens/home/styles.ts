@@ -18,3 +18,8 @@ export const CardsBox = styled.View<CardsBoxProps>`
   flex-direction: row;
   gap: ${spacing.md}px;
 `
+
+export const CardsTitleBox = styled.View`
+  margin-top: ${spacing.xs}px;
+  margin-bottom: ${spacing.md}px;
+`

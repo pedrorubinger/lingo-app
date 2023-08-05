@@ -1,8 +1,12 @@
 import { DashboardStackScreenProps } from "@interfaces/index"
-import { ScreenBox } from "@components/index"
+import { ScreenBox, Typography } from "@components/index"
 import { serviceCards, divideArrayIntoChunks } from "@modules/dashboard/utils"
 import { HomeHeader, ServiceCard } from "@modules/dashboard/components"
-import { Body, CardsBox } from "@modules/dashboard/screens/home/styles"
+import {
+  Body,
+  CardsBox,
+  CardsTitleBox,
+} from "@modules/dashboard/screens/home/styles"
 
 interface Props extends DashboardStackScreenProps<"Home"> {}
 
@@ -14,6 +18,12 @@ export const Home: React.FC<Props> = () => {
       <HomeHeader name="Pedro" />
 
       <Body>
+        <CardsTitleBox>
+          <Typography font="lg4" color="koamaru300">
+            Services
+          </Typography>
+        </CardsTitleBox>
+
         {serviceChunks.map((chunk, i) => {
           return (
             <CardsBox isFirstBox={i === 0} key={i}>
