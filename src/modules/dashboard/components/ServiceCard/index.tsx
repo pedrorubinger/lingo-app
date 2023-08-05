@@ -1,7 +1,7 @@
 import React from "react"
 import { StyleSheet } from "react-native"
 
-import { Theme, ColorName } from "@styles/index"
+import { Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
 import { TouchableBox } from "@modules/dashboard/components/ServiceCard/styles"
 import { ServiceCardStatus } from "@interfaces/ServiceCard"
