@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
+import { Animated } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
-import { featureCards } from "@modules/dashboard/utils"
+import { FEATURES_CAROUSEL_DEF, featureCards } from "@modules/dashboard/utils"
 import { Theme } from "@styles/index"
 import {
   FeatureBox,
@@ -16,28 +17,60 @@ const { colors } = Theme
 
 interface Props {}
 
-const CAROUSEL_LENGTH = featureCards.length
-
 export const FeaturesCarrousel: React.FC<Props> = () => {
+  const [hasFinishedAnimation, setHasFinishedAnimation] = useState(true)
+  const fadeAnimationRef = useRef(new Animated.Value(1)).current
+
   const [index, setCurrentIndex] = useState<number>(0)
   const currentFeature = featureCards[index]
 
-  const onPressNext = () => {
-    setCurrentIndex((i) => {
-      if (CAROUSEL_LENGTH - 1 === i) return 0
-      else return i + 1
+  const fadeIn = () => {
+    Animated.timing(fadeAnimationRef, {
+      toValue: 1,
+      duration: FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME,
+      useNativeDriver: true,
+    }).start(() => {
+      setHasFinishedAnimation(true)
     })
+  }
+
+  const fadeOut = () => {
+    setHasFinishedAnimation(false)
+    Animated.timing(fadeAnimationRef, {
+      toValue: 0,
+      duration: FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME,
+      useNativeDriver: true,
+    }).start(() => {
+      fadeIn()
+    })
+  }
+
+  const onPressNext = () => {
+    if (!hasFinishedAnimation) return
+
+    fadeOut()
+    setTimeout(() => {
+      setCurrentIndex((i) => {
+        if (FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1 === i) return 0
+        else return i + 1
+      })
+    }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
   }
 
   const onPressPrev = () => {
-    setCurrentIndex((i) => {
-      if (i === 0) return CAROUSEL_LENGTH - 1
-      else return i - 1
-    })
+    if (!hasFinishedAnimation) return
+
+    fadeOut()
+    setTimeout(() => {
+      setCurrentIndex((i) => {
+        if (i === 0) return FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1
+        else return i - 1
+      })
+    }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
   }
 
   return (
-    <FeatureBox>
+    <FeatureBox style={{ opacity: fadeAnimationRef }}>
       <FeatureNavigator onPress={onPressPrev}>
         <Entypo name="chevron-left" size={24} color={colors.koamaru300} />
       </FeatureNavigator>

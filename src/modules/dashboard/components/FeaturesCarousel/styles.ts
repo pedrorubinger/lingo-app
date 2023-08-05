@@ -2,10 +2,11 @@ import styled from "styled-components/native"
 
 import { Theme } from "@styles/theme"
 import { Typography } from "@components/Typography"
+import { Animated } from "react-native"
 
 const { colors, radius, spacing } = Theme
 
-export const FeatureBox = styled.View`
+export const FeatureBox = styled(Animated.View)`
   width: 100%;
 
   flex-direction: row;

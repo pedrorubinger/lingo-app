@@ -18,3 +18,8 @@ export const featureCards: FeatureCardData[] = [
     text: "Lorem ipsum, dolor sit amet consectetur",
   },
 ]
+
+export const FEATURES_CAROUSEL_DEF = {
+  CAROUSEL_LENGTH: featureCards.length,
+  FADE_ANIMATION_TIME: 400,
+}
