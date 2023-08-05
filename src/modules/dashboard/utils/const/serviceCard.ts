@@ -1,6 +1,6 @@
 import { ServiceCardData, ServiceCardStatus } from "@interfaces/index"
 
-export const cardServices: ServiceCardData[] = [
+export const serviceCards: ServiceCardData[] = [
   {
     id: 1,
     title: "Translator",
