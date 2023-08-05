@@ -4,7 +4,7 @@ import { Theme } from "@styles/theme"
 
 import styled from "styled-components/native"
 
-const { colors, spacing } = Theme
+const { colors, spacing, radius } = Theme
 
 interface TouchableBoxProps {
   status?: ServiceCardStatus
@@ -31,7 +31,7 @@ export const TouchableBox = styled.TouchableOpacity<TouchableBoxProps>`
   opacity: ${({ status = ServiceCardStatus.DEFAULT }) =>
     status === ServiceCardStatus.DISABLED ? 0.4 : 1};
 
-  border-radius: 30px;
+  border-radius: ${radius.xl}px;
   padding: ${boxYPadding}px ${spacing.md}px ${boxYPadding}px ${spacing.lg}px;
 
   gap: ${spacing.xs}px;
