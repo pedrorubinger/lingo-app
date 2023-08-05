@@ -16,6 +16,12 @@ interface Props {
 }
 
 export const HomeHeader: React.FC<Props> = ({ name }) => {
+  const MAX_NAME_LENGTH = 11
+  const label =
+    name.length > MAX_NAME_LENGTH
+      ? `${name.slice(0, MAX_NAME_LENGTH)}...`
+      : `${name}!`
+
   const onPressMenu = () => {}
 
   return (
@@ -25,7 +31,7 @@ export const HomeHeader: React.FC<Props> = ({ name }) => {
           Welcome,
         </Typography>
         <Typography color="koamaru300" font="xxl4">
-          {name}!
+          {label}
         </Typography>
       </MessageBox>
 
