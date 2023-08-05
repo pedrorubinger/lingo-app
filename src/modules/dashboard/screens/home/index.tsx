@@ -1,16 +1,15 @@
 import { DashboardStackScreenProps } from "@interfaces/index"
 import { ScreenBox, Typography } from "@components/index"
 import { serviceCards, divideArrayIntoChunks } from "@modules/dashboard/utils"
-import { HomeHeader, ServiceCard } from "@modules/dashboard/components"
+import {
+  FeaturesCarrousel,
+  HomeHeader,
+  ServiceCard,
+} from "@modules/dashboard/components"
 import {
   Body,
   CardsBox,
   CardsTitleBox,
-  CarouselBox,
-  CarouselCaption,
-  CarouselCaptionBox,
-  CarouselCard,
-  CarouselImg,
   CarouselTitleBox,
 } from "@modules/dashboard/screens/home/styles"
 
@@ -54,25 +53,7 @@ export const Home: React.FC<Props> = () => {
           </Typography>
         </CarouselTitleBox>
 
-        <CarouselBox>
-          <CarouselCard>
-            <CarouselImg source={require("@assets/images/glasses.jpg")} />
-            <CarouselCaptionBox>
-              <CarouselCaption>
-                Translate texts into more than 30 languages
-              </CarouselCaption>
-            </CarouselCaptionBox>
-          </CarouselCard>
-
-          <CarouselCard>
-            <CarouselImg source={require("@assets/images/kindle.jpg")} />
-            <CarouselCaptionBox>
-              <CarouselCaption>
-                Lorem ipsum, dolor sit amet consectetur
-              </CarouselCaption>
-            </CarouselCaptionBox>
-          </CarouselCard>
-        </CarouselBox>
+        <FeaturesCarrousel />
       </Body>
     </ScreenBox>
   )
