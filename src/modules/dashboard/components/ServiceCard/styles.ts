@@ -22,6 +22,8 @@ const getBackground = (status: ServiceCardStatus): ColorValue => {
   }
 }
 
+const boxYPadding = spacing.lg + 2
+
 export const Box = styled.View<BoxProps>`
   width: ${({ width = "auto" }) => width};
   background-color: ${({ status = ServiceCardStatus.DEFAULT }) =>
@@ -30,7 +32,7 @@ export const Box = styled.View<BoxProps>`
     status === ServiceCardStatus.DISABLED ? 0.4 : 1};
 
   border-radius: 30px;
-  padding: ${spacing.lg}px ${spacing.md}px ${spacing.lg}px ${spacing.lg}px;
+  padding: ${boxYPadding}px ${spacing.md}px ${spacing.lg}px ${boxYPadding}px;
 
   gap: ${spacing.xs}px;
 `
