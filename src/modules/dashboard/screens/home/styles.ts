@@ -49,7 +49,7 @@ export const CarouselCard = styled.View`
 export const CarouselImg = styled.Image`
   width: 160px;
   height: 300px;
-  opacity: 1;
+  opacity: 0.95;
 
   border-radius: ${radius.md}px;
 `
