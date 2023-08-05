@@ -32,7 +32,7 @@ export const TouchableBox = styled.TouchableOpacity<TouchableBoxProps>`
     status === ServiceCardStatus.DISABLED ? 0.4 : 1};
 
   border-radius: 30px;
-  padding: ${boxYPadding}px ${spacing.md}px ${spacing.lg}px ${boxYPadding}px;
+  padding: ${boxYPadding}px ${spacing.md}px ${boxYPadding}px ${spacing.lg}px;
 
   gap: ${spacing.xs}px;
 `

@@ -1,8 +1,8 @@
 import { DashboardStackScreenProps } from "@interfaces/index"
+import { ScreenBox } from "@components/index"
 import { serviceCards, divideArrayIntoChunks } from "@modules/dashboard/utils"
-import { ScreenBox, ServiceCard } from "@modules/dashboard/components"
+import { HomeHeader, ServiceCard } from "@modules/dashboard/components"
 import { Body, CardsBox } from "@modules/dashboard/screens/home/styles"
-import { ScreenHeader } from "@components/ScreenHeader"
 
 interface Props extends DashboardStackScreenProps<"Home"> {}
 
@@ -11,7 +11,7 @@ export const Home: React.FC<Props> = () => {
 
   return (
     <ScreenBox>
-      <ScreenHeader title="Home" />
+      <HomeHeader name="Pedro" />
 
       <Body>
         {serviceChunks.map((chunk, i) => {

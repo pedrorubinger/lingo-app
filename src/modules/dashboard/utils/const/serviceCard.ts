@@ -4,15 +4,15 @@ export const serviceCards: ServiceCardData[] = [
   {
     id: 1,
     title: "Translator",
-    sub: "Every language",
-    width: "47%",
+    sub: "All languages",
+    width: "48%",
     status: ServiceCardStatus.DEFAULT,
   },
   {
     id: 2,
     title: "Spell checker",
     sub: "Available soon",
-    width: "47%",
+    width: "48%",
     status: ServiceCardStatus.DISABLED,
   },
 ]

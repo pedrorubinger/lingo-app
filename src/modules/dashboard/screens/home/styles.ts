@@ -11,6 +11,7 @@ interface CardsBoxProps {
 }
 
 export const CardsBox = styled.View<CardsBoxProps>`
+  width: 100%;
   padding: 0;
   margin-top: ${({ isFirstBox = false }) => (isFirstBox ? 0 : spacing.lg)}px;
 

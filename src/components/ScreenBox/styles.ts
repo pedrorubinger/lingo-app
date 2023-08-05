@@ -4,12 +4,15 @@ import { Theme } from "@styles/theme"
 
 const { colors, spacing } = Theme
 
-export const Box = styled.View`
-  width: 100%;
-  height: 100%;
-  padding: ${spacing.xxxl}px ${spacing.md}px ${spacing.md}px ${spacing.md}px;
+export const Box = styled.SafeAreaView`
+  flex: 1;
+`
 
-  background-color: ${colors.grey100};
+export const Content = styled.View`
+  padding: ${spacing.sm}px ${spacing.lg}px ${spacing.sm}px ${spacing.lg}px;
 
+  background-color: ${colors.grey80};
+
+  flex: 1;
   align-items: center;
 `
