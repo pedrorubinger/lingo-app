@@ -11,8 +11,8 @@ export const cardServices: ServiceCardData[] = [
   {
     id: 2,
     title: "Spell checker",
-    sub: "Smart corrector",
+    sub: "Available soon",
     width: "47%",
-    status: ServiceCardStatus.ACTIVE,
+    status: ServiceCardStatus.DISABLED,
   },
 ]
