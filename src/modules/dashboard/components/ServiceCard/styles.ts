@@ -14,7 +14,7 @@ interface BoxProps {
 const getBackground = (status: ServiceCardStatus): ColorValue => {
   switch (status) {
     case ServiceCardStatus.ACTIVE:
-      return colors.green500
+      return colors.primary
     case ServiceCardStatus.DISABLED:
       return colors.grey300
     default:
