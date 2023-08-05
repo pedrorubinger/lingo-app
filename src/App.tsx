@@ -31,7 +31,7 @@ export default function App() {
         <Routes />
       </NavigationContainer>
 
-      <StatusBar style="light" backgroundColor={Theme.colors.primary} />
+      <StatusBar style="auto" backgroundColor={Theme.colors.primary} />
     </ThemeProvider>
   )
 }
