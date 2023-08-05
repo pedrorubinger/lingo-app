@@ -6,6 +6,12 @@ import {
   Body,
   CardsBox,
   CardsTitleBox,
+  CarouselBox,
+  CarouselCaption,
+  CarouselCaptionBox,
+  CarouselCard,
+  CarouselImg,
+  CarouselTitleBox,
 } from "@modules/dashboard/screens/home/styles"
 
 interface Props extends DashboardStackScreenProps<"Home"> {}
@@ -41,6 +47,32 @@ export const Home: React.FC<Props> = () => {
             </CardsBox>
           )
         })}
+
+        <CarouselTitleBox>
+          <Typography font="lg4" color="koamaru300">
+            Explore new features
+          </Typography>
+        </CarouselTitleBox>
+
+        <CarouselBox>
+          <CarouselCard>
+            <CarouselImg source={require("@assets/images/glasses.jpg")} />
+            <CarouselCaptionBox>
+              <CarouselCaption>
+                Translate texts into more than 30 languages
+              </CarouselCaption>
+            </CarouselCaptionBox>
+          </CarouselCard>
+
+          <CarouselCard>
+            <CarouselImg source={require("@assets/images/kindle.jpg")} />
+            <CarouselCaptionBox>
+              <CarouselCaption>
+                Lorem ipsum, dolor sit amet consectetur
+              </CarouselCaption>
+            </CarouselCaptionBox>
+          </CarouselCard>
+        </CarouselBox>
       </Body>
     </ScreenBox>
   )
