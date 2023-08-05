@@ -9,4 +9,12 @@ export const featureCards: FeatureCardData[] = [
     source: require("@assets/images/kindle.jpg"),
     text: "Lorem ipsum, dolor sit amet consectetur",
   },
+  {
+    source: require("@assets/images/class.jpg"),
+    text: "Lorem ipsum, dolor sit amet consectetur",
+  },
+  {
+    source: require("@assets/images/tablet.jpg"),
+    text: "Lorem ipsum, dolor sit amet consectetur",
+  },
 ]
