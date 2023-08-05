@@ -2,8 +2,10 @@ import React from "react"
 import { StatusBar } from "expo-status-bar"
 import { useFonts } from "expo-font"
 import { ThemeProvider } from "styled-components/native"
+import { NavigationContainer } from "@react-navigation/native"
 
 import { Theme } from "@styles/index"
+import { Routes } from "@routes/index.routes"
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,6 +27,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={Theme}>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+
       <StatusBar style="light" backgroundColor={Theme.colors.primary} />
     </ThemeProvider>
   )
