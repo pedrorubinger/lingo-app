@@ -5,6 +5,7 @@ import { Entypo } from "@expo/vector-icons"
 import { FEATURES_CAROUSEL_DEF, featureCards } from "@modules/dashboard/utils"
 import { Theme } from "@styles/index"
 import {
+  CarouselPagination,
   FeatureBox,
   FeatureCaption,
   FeatureCaptionBox,
@@ -80,22 +81,30 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
   }, [])
 
   return (
-    <FeatureBox style={{ opacity: fadeAnimationRef }}>
-      <FeatureNavigator onPress={onPressPrev}>
-        <Entypo name="chevron-left" size={24} color={colors.koamaru300} />
-      </FeatureNavigator>
+    <>
+      <FeatureBox style={{ opacity: fadeAnimationRef }}>
+        <FeatureNavigator onPress={onPressPrev}>
+          <Entypo name="chevron-left" size={24} color={colors.koamaru300} />
+        </FeatureNavigator>
 
-      <FeatureCard>
-        <FeatureImg source={currentFeature.source} />
+        <FeatureCard>
+          <FeatureImg source={currentFeature.source} />
 
-        <FeatureCaptionBox>
-          <FeatureCaption>{currentFeature.text}</FeatureCaption>
-        </FeatureCaptionBox>
-      </FeatureCard>
+          <FeatureCaptionBox>
+            <FeatureCaption>{currentFeature.text}</FeatureCaption>
+          </FeatureCaptionBox>
+        </FeatureCard>
 
-      <FeatureNavigator onPress={onPressNext}>
-        <Entypo name="chevron-right" size={24} color={colors.koamaru300} />
-      </FeatureNavigator>
-    </FeatureBox>
+        <FeatureNavigator onPress={onPressNext}>
+          <Entypo name="chevron-right" size={24} color={colors.koamaru300} />
+        </FeatureNavigator>
+      </FeatureBox>
+
+      <CarouselPagination onPress={onPressNext}>
+        <Entypo name="dot-single" size={22} color={colors.grey500} />
+        <Entypo name="dot-single" size={22} color={colors.grey500} />
+        <Entypo name="dot-single" size={22} color={colors.grey500} />
+      </CarouselPagination>
+    </>
   )
 }

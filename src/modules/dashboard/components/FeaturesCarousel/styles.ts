@@ -52,3 +52,12 @@ export const FeatureNavigator = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `
+
+export const CarouselPagination = styled.TouchableOpacity`
+  margin-top: ${spacing.md}px;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: -5px;
+`
