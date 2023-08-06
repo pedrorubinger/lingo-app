@@ -53,11 +53,17 @@ export const FeatureNavigator = styled.TouchableOpacity`
   justify-content: center;
 `
 
-export const CarouselPagination = styled.TouchableOpacity`
+export const CarouselPaginationBox = styled.View`
   margin-top: ${spacing.md}px;
 
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  width: auto;
+
   gap: -5px;
+`
+
+export const CarouselPaginationTouchable = styled.TouchableOpacity`
+  flex-direction: row;
 `

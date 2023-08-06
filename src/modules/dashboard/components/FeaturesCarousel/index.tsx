@@ -5,7 +5,8 @@ import { Entypo } from "@expo/vector-icons"
 import { FEATURES_CAROUSEL_DEF, featureCards } from "@modules/dashboard/utils"
 import { Theme } from "@styles/index"
 import {
-  CarouselPagination,
+  CarouselPaginationTouchable,
+  CarouselPaginationBox,
   FeatureBox,
   FeatureCaption,
   FeatureCaptionBox,
@@ -100,11 +101,13 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
         </FeatureNavigator>
       </FeatureBox>
 
-      <CarouselPagination onPress={onPressNext}>
-        <Entypo name="dot-single" size={22} color={colors.grey500} />
-        <Entypo name="dot-single" size={22} color={colors.grey500} />
-        <Entypo name="dot-single" size={22} color={colors.grey500} />
-      </CarouselPagination>
+      <CarouselPaginationBox>
+        <CarouselPaginationTouchable onPress={onPressNext}>
+          <Entypo name="dot-single" size={22} color={colors.grey500} />
+          <Entypo name="dot-single" size={22} color={colors.grey500} />
+          <Entypo name="dot-single" size={22} color={colors.grey500} />
+        </CarouselPaginationTouchable>
+      </CarouselPaginationBox>
     </>
   )
 }
