@@ -1,7 +1,10 @@
 import React from "react"
+import { useNavigation } from "@react-navigation/native"
+import { StackNavigationProp } from "@react-navigation/stack"
 import { Entypo } from "@expo/vector-icons"
 
 import { Theme } from "@styles/index"
+import { RootStackParamList } from "@interfaces/index"
 import { Typography } from "@components/Typography"
 import {
   Box,
@@ -16,13 +19,16 @@ interface Props {
 }
 
 export const HomeHeader: React.FC<Props> = ({ name }) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
   const MAX_NAME_LENGTH = 11
   const label =
     name.length > MAX_NAME_LENGTH
       ? `${name.slice(0, MAX_NAME_LENGTH)}...`
       : `${name}!`
 
-  const onPressMenu = () => {}
+  const onPressMenu = () => {
+    navigation.navigate("DashboardStack", { screen: "Menu" })
+  }
 
   return (
     <Box>
