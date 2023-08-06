@@ -8,11 +8,15 @@ export const Box = styled.SafeAreaView`
   flex: 1;
 `
 
-export const Content = styled.View`
+export const Content = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    alignItems: "center",
+  },
+  alwaysBounceVertical: false,
+}))`
   padding: ${spacing.sm}px ${spacing.lg}px ${spacing.sm}px ${spacing.lg}px;
 
   background-color: ${colors.grey80};
 
   flex: 1;
-  align-items: center;
 `
