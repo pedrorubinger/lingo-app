@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { Animated } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
@@ -28,6 +28,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
   /* Timeout */
   const prevBtnTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const nextBtnTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const transitionTimerRef = useRef<NodeJS.Timer | null>(null)
 
   const fadeIn = () => {
     Animated.timing(fadeAnimationRef, {
@@ -36,6 +37,8 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
       useNativeDriver: true,
     }).start(() => {
       setHasFinishedAnimation(true)
+
+      if (!transitionTimerRef.current) setTransitionInterval()
     })
   }
 
@@ -50,9 +53,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     })
   }
 
-  const onPressNext = () => {
-    if (!hasFinishedAnimation) return
-
+  const slideForward = () => {
     fadeOut()
     nextBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
@@ -62,9 +63,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
   }
 
-  const onPressPrev = () => {
-    if (!hasFinishedAnimation) return
-
+  const slideBack = () => {
     fadeOut()
     prevBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
@@ -74,17 +73,38 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
   }
 
+  const setTransitionInterval = useCallback(() => {
+    transitionTimerRef.current = setInterval(() => {
+      slideForward()
+    }, 6000)
+  }, [transitionTimerRef])
+
+  const onNavigate = (action: "PREV" | "NEXT") => {
+    if (transitionTimerRef.current) {
+      clearInterval(transitionTimerRef.current)
+      transitionTimerRef.current = null
+    }
+
+    if (!hasFinishedAnimation) return
+
+    if (action === "PREV") slideBack()
+    else slideForward()
+  }
+
   useEffect(() => {
+    setTransitionInterval()
+
     return () => {
+      if (transitionTimerRef.current) clearInterval(transitionTimerRef.current)
       if (prevBtnTimeoutRef.current) clearTimeout(prevBtnTimeoutRef.current)
       if (nextBtnTimeoutRef.current) clearTimeout(nextBtnTimeoutRef.current)
     }
-  }, [])
+  }, [setTransitionInterval])
 
   return (
     <>
       <FeatureBox style={{ opacity: fadeAnimationRef }}>
-        <FeatureNavigator onPress={onPressPrev}>
+        <FeatureNavigator onPress={() => onNavigate("PREV")}>
           <Entypo name="chevron-left" size={24} color={colors.koamaru300} />
         </FeatureNavigator>
 
@@ -96,13 +116,13 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
           </FeatureCaptionBox>
         </FeatureCard>
 
-        <FeatureNavigator onPress={onPressNext}>
+        <FeatureNavigator onPress={() => onNavigate("NEXT")}>
           <Entypo name="chevron-right" size={24} color={colors.koamaru300} />
         </FeatureNavigator>
       </FeatureBox>
 
       <CarouselPaginationBox>
-        <CarouselPaginationTouchable onPress={onPressNext}>
+        <CarouselPaginationTouchable onPress={() => onNavigate("NEXT")}>
           <Entypo name="dot-single" size={22} color={colors.grey500} />
           <Entypo name="dot-single" size={22} color={colors.grey500} />
           <Entypo name="dot-single" size={22} color={colors.grey500} />
