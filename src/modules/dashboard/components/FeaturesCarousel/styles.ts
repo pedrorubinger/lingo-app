@@ -60,10 +60,9 @@ export const CarouselPaginationBox = styled.View`
   justify-content: center;
   flex-direction: row;
   width: auto;
-
-  gap: -5px;
 `
 
 export const CarouselPaginationTouchable = styled.TouchableOpacity`
   flex-direction: row;
+  gap: -5px;
 `
