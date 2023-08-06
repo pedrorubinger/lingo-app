@@ -6,7 +6,7 @@ import { Animated } from "react-native"
 
 const { colors, radius, spacing } = Theme
 
-export const FeatureBox = styled(Animated.View)`
+export const FeatureBox = styled.View`
   width: 100%;
 
   flex-direction: row;
@@ -14,7 +14,7 @@ export const FeatureBox = styled(Animated.View)`
   gap: ${spacing.sm}px;
 `
 
-export const FeatureCard = styled.View`
+export const FeatureCard = styled(Animated.View)`
   flex: 1;
   height: 320px;
 

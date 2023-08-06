@@ -103,12 +103,12 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
 
   return (
     <>
-      <FeatureBox style={{ opacity: fadeAnimationRef }}>
+      <FeatureBox>
         <FeatureNavigator onPress={() => onNavigate("PREV")}>
           <Entypo name="chevron-left" size={24} color={colors.koamaru300} />
         </FeatureNavigator>
 
-        <FeatureCard>
+        <FeatureCard style={{ opacity: fadeAnimationRef }}>
           <FeatureImg source={currentFeature.source} />
 
           <FeatureCaptionBox>
