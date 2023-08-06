@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Animated } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
@@ -18,11 +18,14 @@ const { colors } = Theme
 interface Props {}
 
 export const FeaturesCarrousel: React.FC<Props> = () => {
-  const [hasFinishedAnimation, setHasFinishedAnimation] = useState(true)
   const fadeAnimationRef = useRef(new Animated.Value(1)).current
-
+  const [hasFinishedAnimation, setHasFinishedAnimation] = useState(true)
   const [index, setCurrentIndex] = useState<number>(0)
   const currentFeature = featureCards[index]
+
+  /* Timeout */
+  const prevBtnTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const nextBtnTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const fadeIn = () => {
     Animated.timing(fadeAnimationRef, {
@@ -49,7 +52,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     if (!hasFinishedAnimation) return
 
     fadeOut()
-    setTimeout(() => {
+    nextBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
         if (FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1 === i) return 0
         else return i + 1
@@ -61,13 +64,20 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     if (!hasFinishedAnimation) return
 
     fadeOut()
-    setTimeout(() => {
+    prevBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
         if (i === 0) return FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1
         else return i - 1
       })
     }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
   }
+
+  useEffect(() => {
+    return () => {
+      if (prevBtnTimeoutRef.current) clearTimeout(prevBtnTimeoutRef.current)
+      if (nextBtnTimeoutRef.current) clearTimeout(nextBtnTimeoutRef.current)
+    }
+  }, [])
 
   return (
     <FeatureBox style={{ opacity: fadeAnimationRef }}>
@@ -77,6 +87,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
 
       <FeatureCard>
         <FeatureImg source={currentFeature.source} />
+
         <FeatureCaptionBox>
           <FeatureCaption>{currentFeature.text}</FeatureCaption>
         </FeatureCaptionBox>
