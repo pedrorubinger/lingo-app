@@ -13,12 +13,10 @@ interface TouchableBoxProps {
 
 const getBackground = (status: ServiceCardStatus): ColorValue => {
   switch (status) {
-    case ServiceCardStatus.ACTIVE:
-      return colors.primary
     case ServiceCardStatus.DISABLED:
       return colors.grey500
     default:
-      return colors.white
+      return colors.primary
   }
 }
 

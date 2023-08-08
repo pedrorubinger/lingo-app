@@ -1,6 +1,5 @@
 export enum ServiceCardStatus {
   DISABLED = "DISABLED",
-  ACTIVE = "ACTIVE",
   DEFAULT = "DEFAULT",
 }
 

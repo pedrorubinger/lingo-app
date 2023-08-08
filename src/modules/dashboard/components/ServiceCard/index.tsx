@@ -37,10 +37,7 @@ export const ServiceCard: React.FC<Props> = ({
   const isDisabled = currentStatus === ServiceCardStatus.DISABLED
 
   const onPressCard = () => {
-    if (currentStatus === ServiceCardStatus.DEFAULT)
-      setCurrentStatus(ServiceCardStatus.ACTIVE)
-    if (currentStatus === ServiceCardStatus.ACTIVE)
-      setCurrentStatus(ServiceCardStatus.DEFAULT)
+    //
   }
 
   return (
