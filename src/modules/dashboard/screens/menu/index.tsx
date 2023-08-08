@@ -29,7 +29,7 @@ export const Menu: React.FC<Props> = () => {
             return (
               <ItemBox key={key}>
                 <Entypo name={iconName} size={22} color={colors.koamaru100} />
-                <Typography color="koamaru100" font="md3">
+                <Typography color="koamaru300" font="md3">
                   {label}
                 </Typography>
               </ItemBox>
@@ -40,7 +40,7 @@ export const Menu: React.FC<Props> = () => {
         <Footer>
           <ItemBox>
             <Entypo name="log-out" size={20} color={colors.koamaru100} />
-            <Typography color="koamaru100" font="md3">
+            <Typography color="koamaru300" font="md3">
               Logout
             </Typography>
           </ItemBox>
