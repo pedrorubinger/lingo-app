@@ -1,3 +1,5 @@
+import { DashboardStackParamList } from "@interfaces/StackParamsList"
+
 export enum ServiceCardStatus {
   DISABLED = "DISABLED",
   DEFAULT = "DEFAULT",
@@ -9,4 +11,5 @@ export interface ServiceCardData {
   sub: string
   width: string
   status: ServiceCardStatus
+  path: keyof DashboardStackParamList
 }

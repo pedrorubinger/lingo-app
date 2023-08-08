@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { DashboardStackParamList } from "@interfaces/index"
 import { Home } from "@modules/dashboard/screens/home"
 import { Menu } from "@modules/dashboard/screens/menu"
+import { Translator } from "@modules/dashboard/screens/translator"
+import { TextInspector } from "@modules/dashboard/screens/textInspector"
 
 const Stack = createNativeStackNavigator<DashboardStackParamList>()
 
@@ -15,6 +17,8 @@ export const DashboardStack: React.FC = () => {
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="Translator" component={Translator} />
+      <Stack.Screen name="TextInspector" component={TextInspector} />
     </Stack.Navigator>
   )
 }

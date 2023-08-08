@@ -1,10 +1,16 @@
 import React, { useState } from "react"
 import { StyleSheet } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { StackNavigationProp } from "@react-navigation/stack"
 
+import {
+  ServiceCardStatus,
+  RootStackParamList,
+  DashboardStackParamList,
+} from "@interfaces/index"
 import { Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
 import { TouchableBox } from "@modules/dashboard/components/ServiceCard/styles"
-import { ServiceCardStatus } from "@interfaces/ServiceCard"
 import { getSubColor, getTitleColor } from "@modules/dashboard/utils"
 
 const { colors } = Theme
@@ -25,6 +31,7 @@ interface Props {
   sub: string
   /** @default DEFAULT */
   status?: ServiceCardStatus
+  screen: keyof DashboardStackParamList
 }
 
 export const ServiceCard: React.FC<Props> = ({
@@ -32,12 +39,14 @@ export const ServiceCard: React.FC<Props> = ({
   sub,
   title,
   width,
+  screen,
 }) => {
-  const [currentStatus, setCurrentStatus] = useState<ServiceCardStatus>(status)
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+  const currentStatus = useState<ServiceCardStatus>(status)[0]
   const isDisabled = currentStatus === ServiceCardStatus.DISABLED
 
   const onPressCard = () => {
-    //
+    navigation.navigate("DashboardStack", { screen })
   }
 
   return (

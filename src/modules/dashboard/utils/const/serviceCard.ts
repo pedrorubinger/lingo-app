@@ -6,6 +6,7 @@ export const serviceCards: ServiceCardData[] = [
     title: "Translator",
     sub: "All languages",
     width: "48%",
+    path: "Translator",
     status: ServiceCardStatus.DEFAULT,
   },
   {
@@ -13,6 +14,7 @@ export const serviceCards: ServiceCardData[] = [
     title: "Text inspector",
     sub: "Available soon",
     width: "48%",
+    path: "TextInspector",
     status: ServiceCardStatus.DISABLED,
   },
 ]

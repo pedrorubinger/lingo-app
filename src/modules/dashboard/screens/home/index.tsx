@@ -40,6 +40,7 @@ export const Home: React.FC<Props> = () => {
                     title={service.title}
                     status={service.status}
                     width={service.width}
+                    screen={service.path}
                   />
                 )
               })}
