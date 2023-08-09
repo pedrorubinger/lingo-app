@@ -48,7 +48,7 @@ export const MessageTypography = styled(Typography)<MessageTypographyProps>`
 export const Footer = styled.SafeAreaView`
   background-color: ${colors.white};
 
-  height: 110px;
+  height: 120px;
   width: 100%;
 
   border-top-width: 1px;
@@ -56,6 +56,9 @@ export const Footer = styled.SafeAreaView`
   border-top-style: solid;
 `
 
-export const FooterContent = styled.SafeAreaView`
+export const FooterContent = styled.View`
   height: 100%;
+
+  margin-top: ${spacing.sm}px;
+  padding: ${spacing.sm}px ${spacing.md}px;
 `

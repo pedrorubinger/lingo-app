@@ -6,7 +6,7 @@ import {
   TranslatorMessageOrigin,
 } from "@interfaces/index"
 import { Theme } from "@styles/index"
-import { ScreenBox, ScreenHeader, Typography } from "@components/index"
+import { Input, ScreenBox, ScreenHeader } from "@components/index"
 import {
   ContentBox,
   Footer,
@@ -52,7 +52,13 @@ export const Translator: React.FC<Props> = () => {
       </ScreenBox>
 
       <Footer>
-        <FooterContent>{/*  */}</FooterContent>
+        <FooterContent>
+          <Input
+            size="md"
+            placeholder="Type your sentence or text here..."
+            onChange={() => {}}
+          />
+        </FooterContent>
       </Footer>
     </>
   )
