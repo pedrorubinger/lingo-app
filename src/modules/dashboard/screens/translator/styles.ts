@@ -11,8 +11,8 @@ export const ContentBox = styled.View`
   padding-bottom: ${spacing.md}px;
 
   flex: 1;
-  gap: ${spacing.md}px;
   flex-direction: column;
+  gap: ${spacing.md}px;
 `
 
 interface MessageBoxProps {
@@ -43,4 +43,15 @@ export const MessageTypography = styled(Typography)<MessageTypographyProps>`
     origin === TranslatorMessageOrigin.APPLICATION
       ? colors.black
       : colors.white};
+`
+
+export const Footer = styled.SafeAreaView`
+  background-color: ${colors.white};
+
+  height: 100px;
+  width: 100%;
+`
+
+export const FooterContent = styled.SafeAreaView`
+  height: 100%;
 `

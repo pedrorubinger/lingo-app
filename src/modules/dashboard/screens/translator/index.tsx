@@ -6,9 +6,11 @@ import {
   TranslatorMessageOrigin,
 } from "@interfaces/index"
 import { Theme } from "@styles/index"
-import { ScreenBox, ScreenHeader } from "@components/index"
+import { ScreenBox, ScreenHeader, Typography } from "@components/index"
 import {
   ContentBox,
+  Footer,
+  FooterContent,
   MessageBox,
   MessageTypography,
 } from "@modules/dashboard/screens/translator/styles"
@@ -32,20 +34,32 @@ export const Translator: React.FC<Props> = () => {
   ]
 
   return (
-    <ScreenBox>
-      <ScreenHeader title="Translator" />
+    <>
+      <ScreenBox
+        scrollViewProps={{
+          contentContainerStyle: {
+            flexGrow: 1,
+          },
+        }}
+      >
+        <ScreenHeader title="Translator" />
 
-      <ContentBox>
-        {messages.map((message) => {
-          return (
-            <MessageBox key={message.id} origin={message.origin}>
-              <MessageTypography font="sm2" origin={message.origin}>
-                {message.content}
-              </MessageTypography>
-            </MessageBox>
-          )
-        })}
-      </ContentBox>
-    </ScreenBox>
+        <ContentBox>
+          {messages.map((message) => {
+            return (
+              <MessageBox key={message.id} origin={message.origin}>
+                <MessageTypography font="sm2" origin={message.origin}>
+                  {message.content}
+                </MessageTypography>
+              </MessageBox>
+            )
+          })}
+        </ContentBox>
+      </ScreenBox>
+
+      <Footer>
+        <FooterContent>{/*  */}</FooterContent>
+      </Footer>
+    </>
   )
 }
