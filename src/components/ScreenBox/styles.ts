@@ -9,9 +9,6 @@ export const Box = styled.SafeAreaView`
 `
 
 export const Content = styled.ScrollView.attrs(() => ({
-  contentContainerStyle: {
-    alignItems: "center",
-  },
   alwaysBounceVertical: false,
 }))`
   padding: ${spacing.sm}px ${spacing.lg}px ${spacing.sm}px ${spacing.lg}px;
