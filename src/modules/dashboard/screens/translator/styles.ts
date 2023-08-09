@@ -8,7 +8,7 @@ const { colors, spacing, radius } = Theme
 
 export const ContentBox = styled.View`
   width: 100%;
-  padding-bottom: ${spacing.md}px;
+  padding-bottom: ${spacing.lg}px;
 
   flex: 1;
   flex-direction: column;
@@ -41,15 +41,19 @@ interface MessageTypographyProps {
 export const MessageTypography = styled(Typography)<MessageTypographyProps>`
   color: ${({ origin }) =>
     origin === TranslatorMessageOrigin.APPLICATION
-      ? colors.black
+      ? colors.grey700
       : colors.white};
 `
 
 export const Footer = styled.SafeAreaView`
   background-color: ${colors.white};
 
-  height: 100px;
+  height: 110px;
   width: 100%;
+
+  border-top-width: 1px;
+  border-top-color: ${colors.grey200};
+  border-top-style: solid;
 `
 
 export const FooterContent = styled.SafeAreaView`
