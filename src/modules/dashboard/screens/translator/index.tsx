@@ -55,7 +55,7 @@ export const Translator: React.FC<Props> = () => {
         <FooterContent>
           <Input
             size="md"
-            placeholder="Type your sentence or text here..."
+            placeholder="Type your text here..."
             onChange={() => {}}
           />
         </FooterContent>
