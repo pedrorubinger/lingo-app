@@ -35,13 +35,7 @@ export const Translator: React.FC<Props> = () => {
 
   return (
     <>
-      <ScreenBox
-        scrollViewProps={{
-          contentContainerStyle: {
-            flexGrow: 1,
-          },
-        }}
-      >
+      <ScreenBox scrollViewProps={{ contentContainerStyle: { flexGrow: 1 } }}>
         <ScreenHeader title="Translator" />
 
         <ContentBox>
