@@ -1,10 +1,21 @@
 import React from "react"
-import { TextInputProps } from "react-native"
+import {
+  GestureResponderEvent,
+  TextInputProps,
+  TouchableOpacityProps,
+} from "react-native"
+import { Entypo } from "@expo/vector-icons"
 
+import { InputSizeName, RadiusName, Theme } from "@styles/index"
 import { Typography } from "@components/index"
-import { StyledInput } from "@components/Input/styles"
-import { InputSizeName } from "@styles/input"
-import { RadiusName } from "@styles/radius"
+import { Box, StyledInput, SubmitBtn } from "@components/Input/styles"
+
+const { colors } = Theme
+
+interface Button {
+  onPress?: ((event: GestureResponderEvent) => void) | undefined
+  btnProps?: Omit<TouchableOpacityProps, "onPress">
+}
 
 interface Props extends TextInputProps {
   label?: string
@@ -25,6 +36,7 @@ interface Props extends TextInputProps {
    * @default "lg"
    */
   borderRadius?: RadiusName
+  button?: Button
 }
 
 export const Input: React.FC<Props> = ({
@@ -33,19 +45,21 @@ export const Input: React.FC<Props> = ({
   label,
   size,
   width,
+  button,
   ...rest
 }) => {
   return (
     <>
       {!!label && <Typography>{label}</Typography>}
-      <StyledInput
-        {...rest}
-        borderRadius={borderRadius}
-        width={width}
-        size={size}
-      >
-        {children}
-      </StyledInput>
+      <Box borderRadius={borderRadius} width={width} size={size}>
+        <StyledInput {...rest}>{children}</StyledInput>
+
+        {!!button && (
+          <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
+            <Entypo name="paper-plane" size={16} color={colors.white} />
+          </SubmitBtn>
+        )}
+      </Box>
     </>
   )
 }

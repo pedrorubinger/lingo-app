@@ -53,7 +53,10 @@ export const Translator: React.FC<Props> = () => {
 
       <Footer>
         <FooterContent>
-          <Input placeholder="Type your text here..." onChange={() => {}} />
+          <Input
+            placeholder="Type your text here..."
+            button={{ onPress: () => console.log("PRESSED") }}
+          />
         </FooterContent>
       </Footer>
     </>
