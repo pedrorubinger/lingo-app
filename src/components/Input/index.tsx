@@ -57,7 +57,7 @@ export const Input: React.FC<Props> = ({
 
         {!!button && (
           <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
-            <Entypo name={button.icon} size={16} color={colors.white} />
+            <Entypo name={button.icon} size={15} color={colors.white} />
           </SubmitBtn>
         )}
       </Box>
