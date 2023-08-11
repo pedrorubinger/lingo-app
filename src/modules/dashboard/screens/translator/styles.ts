@@ -4,7 +4,7 @@ import { TranslatorMessageOrigin } from "@interfaces/index"
 import { Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
 
-const { colors, spacing, radius } = Theme
+const { colors, spacing, radius, inputSize } = Theme
 
 export const ContentBox = styled.View`
   width: 100%;
@@ -58,7 +58,33 @@ export const Footer = styled.SafeAreaView`
 
 export const FooterContent = styled.View`
   height: 100%;
+  width: 100%;
+
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.sm}px;
 
   margin-top: ${spacing.sm}px;
-  padding: ${spacing.sm}px ${spacing.md}px;
+  padding: ${spacing.sm}px 4%;
+`
+
+export const InputBox = styled.View`
+  width: 88%;
+`
+
+export const LanguageSelectorBox = styled.View``
+
+export const LanguageSelectorBtn = styled.TouchableOpacity`
+  border-radius: ${radius.lg}px;
+
+  align-items: center;
+  justify-content: center;
+  padding: ${spacing.sm}px;
+
+  background-color: ${colors.grey100};
+`
+
+export const LanguageSelectorImg = styled.Image`
+  width: 24px;
+  height: 24px;
 `

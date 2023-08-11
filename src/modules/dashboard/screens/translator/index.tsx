@@ -11,6 +11,10 @@ import {
   ContentBox,
   Footer,
   FooterContent,
+  InputBox,
+  LanguageSelectorBox,
+  LanguageSelectorBtn,
+  LanguageSelectorImg,
   MessageBox,
   MessageTypography,
 } from "@modules/dashboard/screens/translator/styles"
@@ -53,13 +57,23 @@ export const Translator: React.FC<Props> = () => {
 
       <Footer>
         <FooterContent>
-          <Input
-            placeholder="Type your text here..."
-            button={{
-              icon: "paper-plane",
-              onPress: () => console.log("PRESSED"),
-            }}
-          />
+          <LanguageSelectorBox>
+            <LanguageSelectorBtn>
+              <LanguageSelectorImg
+                source={require("@assets/images/flags/germany.png")}
+              />
+            </LanguageSelectorBtn>
+          </LanguageSelectorBox>
+
+          <InputBox>
+            <Input
+              placeholder="Translate texts to German..."
+              button={{
+                icon: "paper-plane",
+                onPress: () => console.log("PRESSED"),
+              }}
+            />
+          </InputBox>
         </FooterContent>
       </Footer>
     </>
