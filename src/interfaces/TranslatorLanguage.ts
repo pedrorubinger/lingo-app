@@ -8,6 +8,11 @@ export enum TranslatorLanguageCountry {
   SPAIN = "SPAIN",
   UNITED_KINGDOM = "UNITED_KINGDOM",
   USA = "USA",
+  RUSSIA = "RUSSIA",
+  FRANCE = "FRANCE",
+  ITALY = "ITALY",
+  JAPAN = "JAPAN",
+  SAUDI_ARABIA = "SAUDI_ARABIA",
 }
 
 export enum TranslatorLanguageCountryLabel {
@@ -18,6 +23,11 @@ export enum TranslatorLanguageCountryLabel {
   SPAIN = "Spain",
   UNITED_KINGDOM = "United Kingdom",
   USA = "United States of America",
+  RUSSIA = "Russia",
+  FRANCE = "France",
+  ITALY = "Italy",
+  JAPAN = "Japan",
+  SAUDI_ARABIA = "Saudi Arabia",
 }
 
 export enum TranslatorLanguageName {
@@ -25,6 +35,11 @@ export enum TranslatorLanguageName {
   PORTUGUESE = "PORTUGUESE",
   GERMAN = "GERMAN",
   ENGLISH = "ENGLISH",
+  ITALIAN = "ITALIAN",
+  FRENCH = "FRENCH",
+  RUSSIAN = "RUSSIAN",
+  JAPANESE = "JAPANESE",
+  ARABIC = "ARABIC",
 }
 
 export enum TranslatorLanguageNameLabel {
@@ -32,6 +47,11 @@ export enum TranslatorLanguageNameLabel {
   PORTUGUESE = "Português",
   GERMAN = "Deutsch",
   ENGLISH = "English",
+  ITALIAN = "Italiano",
+  FRENCH = "Français",
+  RUSSIAN = "Русский",
+  JAPANESE = "(Japanese) 日本語",
+  ARABIC = "(Arabic) عربي",
 }
 
 export interface TranslatorLanguage {
