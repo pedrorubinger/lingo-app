@@ -32,8 +32,13 @@ export const Translator: React.FC<Props> = () => {
     },
     {
       id: "2",
-      content: "Ich möchte bitte eine Pepperoni-Pizza.",
+      content: "Eu gostaria de pedir uma pizza de pepperoni.",
       origin: TranslatorMessageOrigin.USER,
+    },
+    {
+      id: "3",
+      content: "Ich möchte bitte eine Pepperoni-Pizza.",
+      origin: TranslatorMessageOrigin.APPLICATION,
     },
   ]
 
@@ -67,7 +72,7 @@ export const Translator: React.FC<Props> = () => {
 
           <InputBox>
             <Input
-              placeholder="Translate texts to German..."
+              placeholder="Translate any text to German..."
               button={{
                 icon: "paper-plane",
                 onPress: () => console.log("PRESSED"),
