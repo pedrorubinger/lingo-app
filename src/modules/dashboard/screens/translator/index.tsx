@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 
 import {
   DashboardStackScreenProps,
+  TranslatorLanguage,
+  TranslatorLanguageName,
+  TranslatorLanguageNameLabel,
   TranslatorMessageData,
   TranslatorMessageOrigin,
 } from "@interfaces/index"
-import { Theme } from "@styles/index"
 import { Input, ScreenBox, ScreenHeader } from "@components/index"
 import {
   ContentBox,
@@ -18,12 +20,14 @@ import {
   MessageBox,
   MessageTypography,
 } from "@modules/dashboard/screens/translator/styles"
-
-const { colors } = Theme
+import { translatorLanguages } from "@modules/dashboard/utils"
 
 interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
+  const [language, setLanguage] = useState<TranslatorLanguage>(
+    translatorLanguages[0]
+  )
   const messages: TranslatorMessageData[] = [
     {
       id: "1",
@@ -32,12 +36,12 @@ export const Translator: React.FC<Props> = () => {
     },
     {
       id: "2",
-      content: "Eu gostaria de pedir uma pizza de pepperoni.",
+      content: "Ich möchte bitte eine Pepperoni-Pizza.",
       origin: TranslatorMessageOrigin.USER,
     },
     {
       id: "3",
-      content: "Ich möchte bitte eine Pepperoni-Pizza.",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
       origin: TranslatorMessageOrigin.APPLICATION,
     },
   ]
@@ -64,15 +68,17 @@ export const Translator: React.FC<Props> = () => {
         <FooterContent>
           <LanguageSelectorBox>
             <LanguageSelectorBtn>
-              <LanguageSelectorImg
-                source={require("@assets/images/flags/germany.png")}
-              />
+              <LanguageSelectorImg source={language.image} />
             </LanguageSelectorBtn>
           </LanguageSelectorBox>
 
           <InputBox>
             <Input
-              placeholder="Translate any text to German..."
+              placeholder={`Translate any text to ${
+                TranslatorLanguageNameLabel[
+                  TranslatorLanguageName[language.name]
+                ]
+              }...`}
               button={{
                 icon: "paper-plane",
                 onPress: () => console.log("PRESSED"),
