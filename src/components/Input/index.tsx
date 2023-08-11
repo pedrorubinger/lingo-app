@@ -14,6 +14,7 @@ const { colors } = Theme
 
 interface Button {
   onPress?: ((event: GestureResponderEvent) => void) | undefined
+  icon: keyof typeof Entypo.glyphMap
   btnProps?: Omit<TouchableOpacityProps, "onPress">
 }
 
@@ -56,7 +57,7 @@ export const Input: React.FC<Props> = ({
 
         {!!button && (
           <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
-            <Entypo name="paper-plane" size={16} color={colors.white} />
+            <Entypo name={button.icon} size={16} color={colors.white} />
           </SubmitBtn>
         )}
       </Box>
