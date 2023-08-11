@@ -1,9 +1,10 @@
 import { FeatureCardData } from "@interfaces/FeatureCard"
+import { AVAILABLE_LANGUAGES_COUNT } from "@modules/dashboard/utils/const/translatorLanguage"
 
 export const featureCards: FeatureCardData[] = [
   {
     source: require("@assets/images/glasses.jpg"),
-    text: "Translate texts into more than 30 languages",
+    text: `Translate texts into more than ${AVAILABLE_LANGUAGES_COUNT} languages`,
   },
   {
     source: require("@assets/images/kindle.jpg"),

@@ -24,3 +24,5 @@ export const translatorLanguages: TranslatorLanguage[] = [
     name: TranslatorLanguageName.ENGLISH,
   },
 ]
+
+export const AVAILABLE_LANGUAGES_COUNT = translatorLanguages.length
