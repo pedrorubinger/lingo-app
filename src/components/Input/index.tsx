@@ -7,7 +7,7 @@ import {
 import { Entypo } from "@expo/vector-icons"
 
 import { InputSizeName, RadiusName, Theme } from "@styles/index"
-import { Typography } from "@components/index"
+import { Typography } from "@components/Typography"
 import { Box, StyledInput, SubmitBtn } from "@components/Input/styles"
 
 const { colors } = Theme
