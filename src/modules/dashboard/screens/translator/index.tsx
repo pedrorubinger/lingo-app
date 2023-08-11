@@ -26,7 +26,8 @@ import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false)
+  const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] =
+    useState(false)
   const [language, setLanguage] = useState<TranslatorLanguage>(
     translatorLanguages[0]
   )
@@ -48,11 +49,14 @@ export const Translator: React.FC<Props> = () => {
     },
   ]
 
+  const onChangeLanguage = (language: TranslatorLanguage) =>
+    setLanguage(language)
+
   const onPressLanguageSelector = () => {
-    setIsDropdownVisible((prev) => !prev)
+    setIsLanguageSelectorVisible((prev) => !prev)
   }
 
-  const onCloseLanguageSelector = () => setIsDropdownVisible(false)
+  const onCloseLanguageSelector = () => setIsLanguageSelectorVisible(false)
 
   return (
     <>
@@ -74,8 +78,12 @@ export const Translator: React.FC<Props> = () => {
 
       <Footer>
         <FooterContent>
-          {!!isDropdownVisible && (
-            <TranslatorLanguagesDropdown onClose={onCloseLanguageSelector} />
+          {!!isLanguageSelectorVisible && (
+            <TranslatorLanguagesDropdown
+              selected={language.name}
+              onChangeLanguage={onChangeLanguage}
+              onClose={onCloseLanguageSelector}
+            />
           )}
 
           <LanguageSelectorBox>
@@ -86,6 +94,9 @@ export const Translator: React.FC<Props> = () => {
 
           <InputBox>
             <Input
+              onPressIn={() => {
+                if (isLanguageSelectorVisible) onCloseLanguageSelector()
+              }}
               placeholder={`Translate any text to ${
                 TranslatorLanguageNameLabel[
                   TranslatorLanguageName[language.name]
