@@ -23,6 +23,21 @@ export const translatorLanguages: TranslatorLanguage[] = [
     image: require("@assets/images/flags/uk.png"),
     name: TranslatorLanguageName.ENGLISH,
   },
+  {
+    id: "german",
+    countries: [TranslatorLanguageCountry.GERMANY],
+    image: require("@assets/images/flags/germany.png"),
+    name: TranslatorLanguageName.GERMAN,
+  },
+  {
+    id: "spanish",
+    countries: [
+      TranslatorLanguageCountry.ARGENTINA,
+      TranslatorLanguageCountry.SPAIN,
+    ],
+    image: require("@assets/images/flags/argentina.png"),
+    name: TranslatorLanguageName.SPANISH,
+  },
 ]
 
 export const AVAILABLE_LANGUAGES_COUNT = translatorLanguages.length
