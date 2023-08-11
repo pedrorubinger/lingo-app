@@ -28,9 +28,9 @@ export enum TranslatorLanguageName {
 }
 
 export enum TranslatorLanguageNameLabel {
-  SPANISH = "Spanish",
-  PORTUGUESE = "Portuguese",
-  GERMAN = "German",
+  SPANISH = "Español",
+  PORTUGUESE = "Português",
+  GERMAN = "Deutsch",
   ENGLISH = "English",
 }
 
