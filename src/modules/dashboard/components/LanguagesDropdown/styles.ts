@@ -12,7 +12,7 @@ export const Box = styled.View`
   bottom: 108%;
   left: 8%;
 
-  padding: ${spacing.xl + 2}px ${spacing.lg}px ${spacing.md}px;
+  padding: ${spacing.xl + 2}px ${spacing.xl}px ${spacing.md}px;
 
   border-radius: ${radius.sm}px;
   border: 1px solid ${colors.grey200};
