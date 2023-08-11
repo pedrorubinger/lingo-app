@@ -21,10 +21,12 @@ import {
   MessageTypography,
 } from "@modules/dashboard/screens/translator/styles"
 import { translatorLanguages } from "@modules/dashboard/utils"
+import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 
 interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false)
   const [language, setLanguage] = useState<TranslatorLanguage>(
     translatorLanguages[0]
   )
@@ -46,6 +48,12 @@ export const Translator: React.FC<Props> = () => {
     },
   ]
 
+  const onPressLanguageSelector = () => {
+    setIsDropdownVisible((prev) => !prev)
+  }
+
+  const onCloseLanguageSelector = () => setIsDropdownVisible(false)
+
   return (
     <>
       <ScreenBox scrollViewProps={{ contentContainerStyle: { flexGrow: 1 } }}>
@@ -66,8 +74,12 @@ export const Translator: React.FC<Props> = () => {
 
       <Footer>
         <FooterContent>
+          {!!isDropdownVisible && (
+            <TranslatorLanguagesDropdown onClose={onCloseLanguageSelector} />
+          )}
+
           <LanguageSelectorBox>
-            <LanguageSelectorBtn>
+            <LanguageSelectorBtn onPress={onPressLanguageSelector}>
               <LanguageSelectorImg source={language.image} />
             </LanguageSelectorBtn>
           </LanguageSelectorBox>
