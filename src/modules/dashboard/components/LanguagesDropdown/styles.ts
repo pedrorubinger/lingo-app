@@ -4,7 +4,7 @@ import { Theme } from "@styles/index"
 
 const { colors, radius, spacing } = Theme
 
-export const Box = styled.View`
+export const Box = styled.ScrollView`
   opacity: 1;
   background-color: ${colors.white};
 
@@ -12,12 +12,15 @@ export const Box = styled.View`
   bottom: 108%;
   left: 8%;
 
-  padding: ${spacing.xl + 2}px ${spacing.lg + 4}px ${spacing.md}px;
-
   border-radius: ${radius.sm}px;
   border: 1px solid ${colors.grey200};
 
+  height: 270px;
+`
+
+export const Content = styled.View`
   gap: ${spacing.md}px;
+  padding: ${spacing.md}px ${spacing.lg}px;
 `
 
 const LanguageBtnBorderStyles = css`
@@ -31,7 +34,7 @@ interface LanguageBtnProps {
 }
 
 export const LanguageBtn = styled.TouchableOpacity<LanguageBtnProps>`
-  margin-top: ${({ isFirst = false }) => (isFirst ? spacing.sm : 0)}px;
+  margin-top: ${({ isFirst = false }) => (isFirst ? spacing.md : 0)}px;
   padding-bottom: ${spacing.sm}px;
 
   flex-direction: row;
