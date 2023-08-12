@@ -15,7 +15,7 @@ export const Box = styled.ScrollView`
   border-radius: ${radius.sm}px;
   border: 1px solid ${colors.grey200};
 
-  height: 270px;
+  height: 260px;
 `
 
 export const Content = styled.View`
@@ -34,7 +34,7 @@ interface LanguageBtnProps {
 }
 
 export const LanguageBtn = styled.TouchableOpacity<LanguageBtnProps>`
-  margin-top: ${({ isFirst = false }) => (isFirst ? spacing.md : 0)}px;
+  margin-top: ${({ isFirst = false }) => (isFirst ? spacing.lg : 0)}px;
   padding-bottom: ${spacing.sm}px;
 
   flex-direction: row;
@@ -46,8 +46,8 @@ export const LanguageBtn = styled.TouchableOpacity<LanguageBtnProps>`
 
 export const CloseBtn = styled.TouchableOpacity`
   position: absolute;
-  right: ${spacing.sm}px;
-  top: ${spacing.sm}px;
+  right: ${spacing.sm + 4}px;
+  top: ${spacing.sm + 4}px;
 `
 
 export const LanguageImg = styled.Image`
