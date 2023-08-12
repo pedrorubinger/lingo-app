@@ -6,6 +6,8 @@ import { Animated } from "react-native"
 
 const { colors, radius, spacing } = Theme
 
+const CARD_HEIGHT = 340
+
 export const FeatureBox = styled.View`
   width: 100%;
 
@@ -16,7 +18,7 @@ export const FeatureBox = styled.View`
 
 export const FeatureCard = styled(Animated.View)`
   flex: 1;
-  height: 320px;
+  height: ${CARD_HEIGHT}px;
 
   background-color: ${colors.white};
   border-radius: ${radius.md}px;
@@ -24,7 +26,7 @@ export const FeatureCard = styled(Animated.View)`
 
 export const FeatureImg = styled.Image`
   width: 100%;
-  height: 320px;
+  height: ${CARD_HEIGHT}px;
   opacity: 0.95;
 
   border-radius: ${radius.md}px;
