@@ -49,14 +49,16 @@ export const Translator: React.FC<Props> = () => {
     },
   ]
 
-  const onChangeLanguage = (language: TranslatorLanguage) =>
-    setLanguage(language)
-
   const onPressLanguageSelector = () => {
     setIsLanguageSelectorVisible((prev) => !prev)
   }
 
   const onCloseLanguageSelector = () => setIsLanguageSelectorVisible(false)
+
+  const onChangeLanguage = (language: TranslatorLanguage) => {
+    setLanguage(language)
+    onCloseLanguageSelector()
+  }
 
   return (
     <>
