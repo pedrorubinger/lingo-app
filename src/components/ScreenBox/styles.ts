@@ -10,15 +10,15 @@ export const Box = styled.SafeAreaView`
   flex: 1;
 `
 
-const contentPaddingTop: number = isAndroid
-  ? (StatusBar.currentHeight as number) + spacing.md
-  : spacing.sm
+const contentMarginTop: number = isAndroid
+  ? (StatusBar.currentHeight as number) + spacing.sm
+  : 0
 
 export const Content = styled.ScrollView.attrs(() => ({
   alwaysBounceVertical: false,
 }))`
-  padding: ${contentPaddingTop}px ${spacing.lg}px ${spacing.sm}px
-    ${spacing.lg}px;
+  margin-top: ${contentMarginTop}px;
+  padding: ${spacing.sm}px ${spacing.lg}px ${spacing.sm}px ${spacing.lg}px;
 
   background-color: ${colors.grey80};
 
