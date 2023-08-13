@@ -14,7 +14,9 @@ export const ScreenBox: React.FC<Props> = ({
 }) => {
   return (
     <Box {...rest}>
-      <Content {...scrollViewProps}>{children}</Content>
+      <Content nestedScrollEnabled {...scrollViewProps}>
+        {children}
+      </Content>
     </Box>
   )
 }
