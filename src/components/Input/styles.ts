@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 
 import { InputSize, InputSizeName, RadiusName, Theme } from "@styles/index"
 
-const { colors, radius, spacing, fonts, inputSize } = Theme
+const { colors, radius, spacing, inputSize } = Theme
 
 interface BoxProps {
   width?: string
@@ -10,15 +10,9 @@ interface BoxProps {
   borderRadius?: RadiusName
 }
 
-const getPadding = (size?: InputSizeName): number => {
-  return (
-    InputSize[size as keyof typeof InputSize]?.padding ?? inputSize.md.padding
-  )
-}
-
 export const Box = styled.View<BoxProps>`
   width: ${({ width = "auto" }) => width};
-  padding: ${({ size }) => getPadding(size)}px;
+  padding: ${spacing.sm}px ${spacing.md}px;
 
   font-size: ${({ size }) =>
     InputSize[size as keyof typeof InputSize]?.fontSize ??
@@ -38,7 +32,7 @@ export const StyledInput = styled.TextInput.attrs({
 })<StyledInputProps>`
   flex: 1;
 
-  margin-right: ${spacing.sm * 4}px;
+  margin-right: ${spacing.md}px;
 `
 
 interface SubmitBtnProps extends Pick<BoxProps, "size"> {}
@@ -48,8 +42,4 @@ export const SubmitBtn = styled.TouchableOpacity<SubmitBtnProps>`
   padding: ${spacing.sm}px;
 
   background-color: ${colors.green400};
-
-  position: absolute;
-  right: ${spacing.sm}px;
-  top: ${({ size }) => getPadding(size) / 2}px;
 `
