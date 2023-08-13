@@ -47,6 +47,61 @@ export const Translator: React.FC<Props> = () => {
       content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
       origin: TranslatorMessageOrigin.APPLICATION,
     },
+    {
+      id: "4",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "5",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "6",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "7",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "8",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "9",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "10",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "11",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "12",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "13",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+    {
+      id: "14",
+      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
   ]
 
   const onPressLanguageSelector = () => {
@@ -62,7 +117,7 @@ export const Translator: React.FC<Props> = () => {
 
   return (
     <>
-      <ScreenBox scrollViewProps={{ contentContainerStyle: { flexGrow: 1 } }}>
+      <ScreenBox>
         <ScreenHeader title="Translator" />
 
         <ContentBox>
@@ -87,7 +142,6 @@ export const Translator: React.FC<Props> = () => {
               onClose={onCloseLanguageSelector}
             />
           )}
-
           <LanguageSelectorBox>
             <LanguageSelectorBtn onPress={onPressLanguageSelector}>
               <LanguageSelectorImg source={language.image} />
