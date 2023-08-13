@@ -64,7 +64,6 @@ export const FooterContent = styled.View`
   align-items: center;
   gap: ${spacing.sm}px;
 
-  margin-top: ${spacing.sm}px;
   padding: ${spacing.sm}px 4%;
 `
 
