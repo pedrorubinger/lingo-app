@@ -53,6 +53,8 @@ export const Translator: React.FC<Props> = () => {
     onCloseLanguageSelector()
   }
 
+  const onPressInput = () => onCloseLanguageSelector()
+
   return (
     <>
       <ScreenBox>
@@ -77,9 +79,7 @@ export const Translator: React.FC<Props> = () => {
         languageSelector={{ language, onPressLanguageSelector }}
         Input={
           <Input
-            onPressIn={() => {
-              if (isSelectorVisible) onCloseLanguageSelector()
-            }}
+            onPressIn={onPressInput}
             placeholder={`Translate any text to ${
               TranslatorLanguageNameLabel[TranslatorLanguageName[language.name]]
             }...`}
