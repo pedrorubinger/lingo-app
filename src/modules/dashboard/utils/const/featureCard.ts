@@ -1,5 +1,5 @@
 import { FeatureCardData } from "@interfaces/FeatureCard"
-import { AVAILABLE_LANGUAGES_COUNT } from "@modules/dashboard/utils/const/translatorLanguage"
+import { AVAILABLE_LANGUAGES_COUNT } from "@modules/dashboard/utils/const/translator"
 
 export const featureCards: FeatureCardData[] = [
   {
