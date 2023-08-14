@@ -1,20 +1,24 @@
 import React from "react"
-import { ScrollViewProps, ViewProps } from "react-native"
+import { ScrollView, ScrollViewProps, ViewProps } from "react-native"
 
 import { Box, Content } from "@components/ScreenBox/styles"
 
 interface Props extends ViewProps {
   scrollViewProps?: ScrollViewProps
+  scrollViewRef?: React.Ref<ScrollView> | undefined
 }
 
 export const ScreenBox: React.FC<Props> = ({
   children,
   scrollViewProps,
+  scrollViewRef,
   ...rest
 }) => {
   return (
     <Box {...rest}>
-      <Content {...scrollViewProps}>{children}</Content>
+      <Content {...scrollViewProps} ref={scrollViewRef}>
+        {children}
+      </Content>
     </Box>
   )
 }
