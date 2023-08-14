@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { ScrollView } from "react-native"
+import { Keyboard, ScrollView } from "react-native"
 import { v4 } from "uuid"
 
 import {
@@ -38,11 +38,9 @@ export const Translator: React.FC<Props> = () => {
   )
 
   const scrollToEnd = () => {
-    if (scrollerTimeout.current && screenBoxScrollerRef.current) {
-      scrollerTimeout.current = setTimeout(() => {
-        screenBoxScrollerRef?.current?.scrollToEnd()
-      }, 100)
-    }
+    scrollerTimeout.current = setTimeout(() => {
+      screenBoxScrollerRef?.current?.scrollToEnd()
+    }, 100)
   }
 
   const onPressLanguageSelector = () => setIsSelectorVisible((prev) => !prev)
@@ -74,6 +72,7 @@ export const Translator: React.FC<Props> = () => {
       { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
     ])
     setMessage("")
+    if (Keyboard.isVisible()) Keyboard.dismiss()
     scrollToEnd()
   }
 
