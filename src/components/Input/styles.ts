@@ -23,6 +23,7 @@ export const Box = styled.View<BoxProps>`
 
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 
 interface StyledInputProps extends Pick<BoxProps, "size"> {}
@@ -32,13 +33,15 @@ export const StyledInput = styled.TextInput.attrs({
 })<StyledInputProps>`
   flex: 1;
 
-  margin-right: ${spacing.md}px;
+  margin-right: ${spacing.sm}px;
 `
 
 interface SubmitBtnProps extends Pick<BoxProps, "size"> {}
 
 export const SubmitBtn = styled.TouchableOpacity<SubmitBtnProps>`
-  border-radius: ${radius.lg}px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
   padding: ${spacing.sm}px;
 
   background-color: ${colors.green400};
