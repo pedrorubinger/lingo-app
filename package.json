@@ -18,12 +18,15 @@
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-native": "0.72.3",
-    "styled-components": "^6.0.7"
+    "react-native-get-random-values": "^1.9.0",
+    "styled-components": "^6.0.7",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.14",
     "@types/react-native": "^0.72.2",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
