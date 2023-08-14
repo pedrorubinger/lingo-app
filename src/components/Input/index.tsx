@@ -47,13 +47,16 @@ export const Input: React.FC<Props> = ({
   size,
   width,
   button,
+  value,
   ...rest
 }) => {
   return (
     <>
       {!!label && <Typography>{label}</Typography>}
       <Box borderRadius={borderRadius} width={width} size={size}>
-        <StyledInput {...rest}>{children}</StyledInput>
+        <StyledInput value={value} {...rest}>
+          {children}
+        </StyledInput>
 
         {!!button && (
           <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
