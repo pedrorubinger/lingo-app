@@ -133,15 +133,16 @@ export const Translator: React.FC<Props> = () => {
         </ContentBox>
       </ScreenBox>
 
+      {!!isLanguageSelectorVisible && (
+        <TranslatorLanguagesDropdown
+          selected={language.name}
+          onChangeLanguage={onChangeLanguage}
+          onClose={onCloseLanguageSelector}
+        />
+      )}
+
       <Footer>
         <FooterContent>
-          {!!isLanguageSelectorVisible && (
-            <TranslatorLanguagesDropdown
-              selected={language.name}
-              onChangeLanguage={onChangeLanguage}
-              onClose={onCloseLanguageSelector}
-            />
-          )}
           <LanguageSelectorBox>
             <LanguageSelectorBtn onPress={onPressLanguageSelector}>
               <LanguageSelectorImg source={language.image} />

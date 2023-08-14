@@ -1,21 +1,21 @@
 import React from "react"
+import { FlatList, ListRenderItem } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
-import {
-  Box,
-  CloseBtn,
-  LanguageImg,
-  LanguageBtn,
-  Content,
-} from "@modules/dashboard/components/LanguagesDropdown/styles"
-import { Typography } from "@components/Typography"
 import { Theme } from "@styles/index"
-import { translatorLanguages } from "@modules/dashboard/utils"
 import {
   TranslatorLanguage,
   TranslatorLanguageName,
   TranslatorLanguageNameLabel,
 } from "@interfaces/index"
+import { Typography } from "@components/Typography"
+import { translatorLanguages } from "@modules/dashboard/utils"
+import {
+  Box,
+  CloseBtn,
+  LanguageImg,
+  LanguageBtn,
+} from "@modules/dashboard/components/LanguagesDropdown/styles"
 
 const { colors } = Theme
 
@@ -30,42 +30,42 @@ export const TranslatorLanguagesDropdown: React.FC<Props> = ({
   onChangeLanguage,
   onClose,
 }) => {
+  const renderItem: ListRenderItem<TranslatorLanguage> = ({ item, index }) => {
+    const isLast = index === translatorLanguages.length - 1
+    const isFirst = index === 0
+    const isActive = selected === item.name
+
+    const onPress = () => onChangeLanguage(item)
+
+    return (
+      <LanguageBtn
+        key={item.id}
+        isFirst={isFirst}
+        isLast={isLast}
+        onPress={onPress}
+      >
+        <LanguageImg source={item.image} />
+
+        <Typography font="sm2" color={isActive ? "green400" : "grey700"}>
+          {TranslatorLanguageNameLabel[TranslatorLanguageName[item.name]]}
+        </Typography>
+      </LanguageBtn>
+    )
+  }
+
   return (
     <Box>
-      <Content>
-        {!!onClose && (
-          <CloseBtn onPress={onClose}>
-            <Entypo name="circle-with-cross" size={18} color={colors.grey500} />
-          </CloseBtn>
-        )}
+      {!!onClose && (
+        <CloseBtn onPress={onClose}>
+          <Entypo name="circle-with-cross" size={18} color={colors.grey500} />
+        </CloseBtn>
+      )}
 
-        {translatorLanguages.map((language, i) => {
-          const isLast = i === translatorLanguages.length - 1
-          const isFirst = i === 0
-          const isActive = selected === language.name
-
-          const onPress = () => onChangeLanguage(language)
-
-          return (
-            <LanguageBtn
-              key={language.id}
-              isFirst={isFirst}
-              isLast={isLast}
-              onPress={onPress}
-            >
-              <LanguageImg source={language.image} />
-
-              <Typography color={isActive ? "green400" : "grey700"}>
-                {
-                  TranslatorLanguageNameLabel[
-                    TranslatorLanguageName[language.name]
-                  ]
-                }
-              </Typography>
-            </LanguageBtn>
-          )
-        })}
-      </Content>
+      <FlatList
+        data={translatorLanguages}
+        keyExtractor={({ id }) => id}
+        renderItem={renderItem}
+      />
     </Box>
   )
 }

@@ -2,25 +2,24 @@ import styled, { css } from "styled-components/native"
 
 import { Theme } from "@styles/index"
 
-const { colors, radius, spacing } = Theme
+const { colors, radius, spacing, zIndex } = Theme
 
-export const Box = styled.ScrollView`
+export const Box = styled.View`
   opacity: 1;
   background-color: ${colors.white};
 
   position: absolute;
-  bottom: 108%;
-  left: 8%;
+  bottom: 110px;
+  left: 22px;
 
   border-radius: ${radius.sm}px;
   border: 1px solid ${colors.grey200};
 
-  height: 260px;
-`
-
-export const Content = styled.View`
-  gap: ${spacing.md}px;
-  padding: ${spacing.md}px ${spacing.lg}px;
+  height: 250px;
+  z-index: ${zIndex.max};
+  width: 220px;
+  margin-right: ${spacing.md + 4}px;
+  padding-left: ${spacing.md + 4}px;
 `
 
 const LanguageBtnBorderStyles = css`
@@ -34,8 +33,8 @@ interface LanguageBtnProps {
 }
 
 export const LanguageBtn = styled.TouchableOpacity<LanguageBtnProps>`
-  margin-top: ${({ isFirst = false }) => (isFirst ? spacing.lg : 0)}px;
-  padding-bottom: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm}px;
+  padding: ${spacing.sm}px 0;
 
   flex-direction: row;
   align-items: center;
@@ -45,9 +44,10 @@ export const LanguageBtn = styled.TouchableOpacity<LanguageBtnProps>`
 `
 
 export const CloseBtn = styled.TouchableOpacity`
-  position: absolute;
-  right: ${spacing.sm + 4}px;
-  top: ${spacing.sm + 4}px;
+  margin-right: ${spacing.sm}px;
+  padding-top: ${spacing.sm}px;
+
+  align-self: flex-end;
 `
 
 export const LanguageImg = styled.Image`
