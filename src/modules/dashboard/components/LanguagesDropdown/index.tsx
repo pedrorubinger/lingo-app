@@ -9,7 +9,7 @@ import {
   TranslatorLanguageNameLabel,
 } from "@interfaces/index"
 import { Typography } from "@components/Typography"
-import { translatorLanguages } from "@modules/dashboard/utils"
+import { TranslatorDefinitions } from "@modules/dashboard/utils"
 import {
   Box,
   CloseBtn,
@@ -18,6 +18,7 @@ import {
 } from "@modules/dashboard/components/LanguagesDropdown/styles"
 
 const { colors } = Theme
+const { LANGUAGES } = TranslatorDefinitions
 
 interface Props {
   onClose?: () => void
@@ -31,7 +32,7 @@ export const TranslatorLanguagesDropdown: React.FC<Props> = ({
   onClose,
 }) => {
   const renderItem: ListRenderItem<TranslatorLanguage> = ({ item, index }) => {
-    const isLast = index === translatorLanguages.length - 1
+    const isLast = index === LANGUAGES.length - 1
     const isFirst = index === 0
     const isActive = selected === item.name
 
@@ -62,7 +63,7 @@ export const TranslatorLanguagesDropdown: React.FC<Props> = ({
       )}
 
       <FlatList
-        data={translatorLanguages}
+        data={LANGUAGES}
         keyExtractor={({ id }) => id}
         renderItem={renderItem}
       />
