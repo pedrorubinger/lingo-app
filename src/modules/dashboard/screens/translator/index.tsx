@@ -67,6 +67,7 @@ export const Translator: React.FC<Props> = () => {
   const onPressInput = () => onCloseLanguageSelector()
 
   const onSendMessage = () => {
+    if (!message) return
     setMessages((prev) => [
       ...prev,
       { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
