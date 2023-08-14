@@ -1,13 +1,14 @@
 import styled from "styled-components/native"
 
 import { Theme } from "@styles/index"
+import { isAndroid } from "@utils/index"
 
 const { colors, spacing, radius } = Theme
 
 export const Footer = styled.SafeAreaView`
   background-color: ${colors.white};
 
-  height: 120px;
+  height: ${isAndroid ? 100 : 120}px;
   width: 100%;
 
   border-top-width: 1px;
