@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { v4 } from "uuid"
 
 import {
   DashboardStackScreenProps,
@@ -23,6 +24,7 @@ interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
   const [isSelectorVisible, setIsSelectorVisible] = useState(false)
+  const [message, setMessage] = useState<string>("")
   const [messages, setMessages] = useState<TranslatorMessageData[]>(
     TranslatorDefinitions.INITIAL_MESSAGES
   )
@@ -40,6 +42,16 @@ export const Translator: React.FC<Props> = () => {
   }
 
   const onPressInput = () => onCloseLanguageSelector()
+
+  const onSendMessage = () => {
+    setMessages((prev) => [
+      ...prev,
+      { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
+    ])
+    setMessage("")
+  }
+
+  const onChangeMessage = (text: string) => setMessage(text)
 
   return (
     <>
@@ -66,12 +78,14 @@ export const Translator: React.FC<Props> = () => {
         Input={
           <Input
             onPressIn={onPressInput}
+            onChangeText={onChangeMessage}
+            value={message}
             placeholder={`Translate any text to ${
               TranslatorLanguageNameLabel[TranslatorLanguageName[language.name]]
             }...`}
             button={{
               icon: "paper-plane",
-              onPress: () => console.log("PRESSED"),
+              onPress: onSendMessage,
             }}
           />
         }
