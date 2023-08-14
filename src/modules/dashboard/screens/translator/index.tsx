@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { ScrollView } from "react-native"
 import { v4 } from "uuid"
 
 import {
@@ -24,6 +25,9 @@ import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
+  const screenBoxScrollerRef = useRef<ScrollView>(null)
+  const scrollerTimeout = useRef<NodeJS.Timeout | null>(null)
+
   const [isSelectorVisible, setIsSelectorVisible] = useState(false)
   const [message, setMessage] = useState<string>("")
   const [messages, setMessages] = useState<TranslatorMessageData[]>(
@@ -32,6 +36,14 @@ export const Translator: React.FC<Props> = () => {
   const [language, setLanguage] = useState<TranslatorLanguage>(
     TranslatorDefinitions.LANGUAGES[0]
   )
+
+  const scrollToEnd = () => {
+    if (scrollerTimeout.current && screenBoxScrollerRef.current) {
+      scrollerTimeout.current = setTimeout(() => {
+        screenBoxScrollerRef?.current?.scrollToEnd()
+      }, 100)
+    }
+  }
 
   const onPressLanguageSelector = () => setIsSelectorVisible((prev) => !prev)
 
@@ -51,6 +63,7 @@ export const Translator: React.FC<Props> = () => {
       { origin: TranslatorMessageOrigin.APPLICATION, content, id: v4() },
     ])
     onCloseLanguageSelector()
+    scrollToEnd()
   }
 
   const onPressInput = () => onCloseLanguageSelector()
@@ -61,13 +74,20 @@ export const Translator: React.FC<Props> = () => {
       { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
     ])
     setMessage("")
+    scrollToEnd()
   }
 
   const onChangeMessage = (text: string) => setMessage(text)
 
+  useEffect(() => {
+    return () => {
+      if (scrollerTimeout.current) clearTimeout(scrollerTimeout.current)
+    }
+  }, [])
+
   return (
     <>
-      <ScreenBox>
+      <ScreenBox scrollViewRef={screenBoxScrollerRef}>
         <ScreenHeader title="Translator" />
 
         <ContentBox>
