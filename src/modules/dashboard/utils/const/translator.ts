@@ -2,6 +2,7 @@ import {
   TranslatorLanguage,
   TranslatorLanguageCountry,
   TranslatorLanguageName,
+  TranslatorLanguageNameLabel,
   TranslatorMessageData,
   TranslatorMessageOrigin,
 } from "@interfaces/index"
@@ -83,7 +84,9 @@ export const TranslatorDefinitions: TranslatorDefinitions = {
   INITIAL_MESSAGES: [
     {
       id: "1",
-      content: "Hello! What can I translate for you?",
+      content: `Hello! I will translate every sentence or text into ${
+        TranslatorLanguageNameLabel[TranslatorLanguageName[LANGUAGES[0].name]]
+      }. You can change the target language by clicking on the country flag next to the text box.`,
       origin: TranslatorMessageOrigin.APPLICATION,
     },
   ],
