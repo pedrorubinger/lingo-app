@@ -4,8 +4,6 @@ import { v4 } from "uuid"
 import {
   DashboardStackScreenProps,
   TranslatorLanguage,
-  TranslatorLanguageName,
-  TranslatorLanguageNameLabel,
   TranslatorMessageData,
   TranslatorMessageOrigin,
 } from "@interfaces/index"
@@ -17,7 +15,10 @@ import {
   ScreenHeader,
 } from "@components/index"
 import { ContentBox } from "@modules/dashboard/screens/translator/styles"
-import { TranslatorDefinitions } from "@modules/dashboard/utils"
+import {
+  TranslatorDefinitions,
+  getLanguageLabel,
+} from "@modules/dashboard/utils"
 import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 
 interface Props extends DashboardStackScreenProps<"Translator"> {}
@@ -36,8 +37,19 @@ export const Translator: React.FC<Props> = () => {
 
   const onCloseLanguageSelector = () => setIsSelectorVisible(false)
 
-  const onChangeLanguage = (language: TranslatorLanguage) => {
-    setLanguage(language)
+  const onChangeLanguage = (newLanguage: TranslatorLanguage): void => {
+    const isSameLanguage = newLanguage.id === language.id
+
+    if (isSameLanguage) return onCloseLanguageSelector()
+
+    const target = getLanguageLabel(newLanguage)
+    const content = `Ok. From now on, I will translate your texts to ${target}!`
+
+    setLanguage(newLanguage)
+    setMessages((prev) => [
+      ...prev,
+      { origin: TranslatorMessageOrigin.APPLICATION, content, id: v4() },
+    ])
     onCloseLanguageSelector()
   }
 
@@ -77,12 +89,12 @@ export const Translator: React.FC<Props> = () => {
         languageSelector={{ language, onPressLanguageSelector }}
         Input={
           <Input
+            value={message}
             onPressIn={onPressInput}
             onChangeText={onChangeMessage}
-            value={message}
-            placeholder={`Translate any text to ${
-              TranslatorLanguageNameLabel[TranslatorLanguageName[language.name]]
-            }...`}
+            placeholder={`Translate any text to ${getLanguageLabel(
+              language
+            )}...`}
             button={{
               icon: "paper-plane",
               onPress: onSendMessage,
