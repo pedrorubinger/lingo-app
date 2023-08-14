@@ -3,6 +3,7 @@ import { Fonts } from "@styles/fonts"
 import { Spacing } from "@styles/spacing"
 import { Radius } from "@styles/radius"
 import { InputSize } from "@styles/input"
+import { ZIndex } from "@styles/zIndex"
 
 export const Theme = {
   name: "defaultTheme",
@@ -11,4 +12,5 @@ export const Theme = {
   spacing: Spacing,
   radius: Radius,
   inputSize: InputSize,
+  zIndex: ZIndex,
 }
