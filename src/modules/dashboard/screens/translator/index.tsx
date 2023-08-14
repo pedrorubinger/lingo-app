@@ -16,33 +16,19 @@ import {
   ScreenHeader,
 } from "@components/index"
 import { ContentBox } from "@modules/dashboard/screens/translator/styles"
-import { translatorLanguages } from "@modules/dashboard/utils"
+import { TranslatorDefinitions } from "@modules/dashboard/utils"
 import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 
 interface Props extends DashboardStackScreenProps<"Translator"> {}
 
 export const Translator: React.FC<Props> = () => {
   const [isSelectorVisible, setIsSelectorVisible] = useState(false)
-  const [language, setLanguage] = useState<TranslatorLanguage>(
-    translatorLanguages[0]
+  const [messages, setMessages] = useState<TranslatorMessageData[]>(
+    TranslatorDefinitions.INITIAL_MESSAGES
   )
-  const messages: TranslatorMessageData[] = [
-    {
-      id: "1",
-      content: "Hello! What can I translate for you?",
-      origin: TranslatorMessageOrigin.APPLICATION,
-    },
-    {
-      id: "2",
-      content: "Ich möchte bitte eine Pepperoni-Pizza.",
-      origin: TranslatorMessageOrigin.USER,
-    },
-    {
-      id: "3",
-      content: "Por favor, eu gostaria de pedir uma pizza de pepperoni.",
-      origin: TranslatorMessageOrigin.APPLICATION,
-    },
-  ]
+  const [language, setLanguage] = useState<TranslatorLanguage>(
+    TranslatorDefinitions.LANGUAGES[0]
+  )
 
   const onPressLanguageSelector = () => setIsSelectorVisible((prev) => !prev)
 

@@ -2,9 +2,17 @@ import {
   TranslatorLanguage,
   TranslatorLanguageCountry,
   TranslatorLanguageName,
+  TranslatorMessageData,
+  TranslatorMessageOrigin,
 } from "@interfaces/index"
 
-export const translatorLanguages: TranslatorLanguage[] = [
+interface TranslatorDefinitions {
+  LANGUAGES: TranslatorLanguage[]
+  INITIAL_MESSAGES: TranslatorMessageData[]
+  AVAILABLE_LANGUAGES_COUNT: number
+}
+
+const LANGUAGES = [
   {
     id: "portuguese",
     countries: [
@@ -70,4 +78,14 @@ export const translatorLanguages: TranslatorLanguage[] = [
   },
 ]
 
-export const AVAILABLE_LANGUAGES_COUNT = translatorLanguages.length
+export const TranslatorDefinitions: TranslatorDefinitions = {
+  LANGUAGES,
+  INITIAL_MESSAGES: [
+    {
+      id: "1",
+      content: "Hello! What can I translate for you?",
+      origin: TranslatorMessageOrigin.APPLICATION,
+    },
+  ],
+  AVAILABLE_LANGUAGES_COUNT: LANGUAGES.length,
+}

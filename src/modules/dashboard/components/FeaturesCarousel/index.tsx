@@ -2,7 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import { Animated } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
-import { FEATURES_CAROUSEL_DEF, featureCards } from "@modules/dashboard/utils"
+import {
+  CarouselFeaturesDefinitions,
+  featureCards,
+} from "@modules/dashboard/utils"
 import { Theme } from "@styles/index"
 import {
   CarouselPaginationTouchable,
@@ -33,7 +36,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
   const fadeIn = () => {
     Animated.timing(fadeAnimationRef, {
       toValue: 1,
-      duration: FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME,
+      duration: CarouselFeaturesDefinitions.FADE_ANIMATION_TIME,
       useNativeDriver: true,
     }).start(() => {
       setHasFinishedAnimation(true)
@@ -46,7 +49,7 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     setHasFinishedAnimation(false)
     Animated.timing(fadeAnimationRef, {
       toValue: 0,
-      duration: FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME,
+      duration: CarouselFeaturesDefinitions.FADE_ANIMATION_TIME,
       useNativeDriver: true,
     }).start(() => {
       fadeIn()
@@ -57,20 +60,20 @@ export const FeaturesCarrousel: React.FC<Props> = () => {
     fadeOut()
     nextBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
-        if (FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1 === i) return 0
+        if (CarouselFeaturesDefinitions.CAROUSEL_LENGTH - 1 === i) return 0
         else return i + 1
       })
-    }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
+    }, CarouselFeaturesDefinitions.FADE_ANIMATION_TIME)
   }
 
   const slideBack = () => {
     fadeOut()
     prevBtnTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((i) => {
-        if (i === 0) return FEATURES_CAROUSEL_DEF.CAROUSEL_LENGTH - 1
+        if (i === 0) return CarouselFeaturesDefinitions.CAROUSEL_LENGTH - 1
         else return i - 1
       })
-    }, FEATURES_CAROUSEL_DEF.FADE_ANIMATION_TIME)
+    }, CarouselFeaturesDefinitions.FADE_ANIMATION_TIME)
   }
 
   const setTransitionInterval = useCallback(() => {
