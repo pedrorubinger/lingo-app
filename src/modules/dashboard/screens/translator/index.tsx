@@ -119,6 +119,8 @@ export const Translator: React.FC<Props> = () => {
               icon: "paper-plane",
               onPress: onSendMessage,
             }}
+            numberOfLines={1}
+            multiline
           />
         }
       />
