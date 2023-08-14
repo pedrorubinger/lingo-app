@@ -1,6 +1,10 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { Animated, PanResponder } from "react-native"
 
-import { TranslatorMessageData } from "@interfaces/index"
+import {
+  TranslatorMessageData,
+  TranslatorMessageOrigin,
+} from "@interfaces/index"
 import {
   MessageBox,
   MessageTypography,
@@ -11,8 +15,32 @@ interface Props {
 }
 
 export const ChatMessage: React.FC<Props> = ({ message }) => {
+  const isAppMessage = message.origin == TranslatorMessageOrigin.APPLICATION
+  const animation = new Animated.Value(-100)
+  const animatedStyles = {
+    transform: [{ translateX: animation }],
+  }
+
+  const startAnimation = () => {
+    Animated.timing(animation, {
+      toValue: 0,
+      duration: 400,
+      useNativeDriver: false,
+    }).start(() => {
+      animation.setValue(0)
+    })
+  }
+
+  useEffect(() => {
+    startAnimation()
+  }, [])
+
   return (
-    <MessageBox key={message.id} origin={message.origin}>
+    <MessageBox
+      key={message.id}
+      origin={message.origin}
+      style={[animatedStyles]}
+    >
       <MessageTypography font="sm2" origin={message.origin}>
         {message.content}
       </MessageTypography>

@@ -3,6 +3,7 @@ import styled from "styled-components/native"
 import { TranslatorMessageOrigin } from "@interfaces/index"
 import { Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
+import { Animated } from "react-native"
 
 const { colors, spacing, radius } = Theme
 
@@ -10,7 +11,7 @@ interface MessageBoxProps {
   origin: TranslatorMessageOrigin
 }
 
-export const MessageBox = styled.View<MessageBoxProps>`
+export const MessageBox = styled(Animated.View)<MessageBoxProps>`
   max-width: 80%;
   padding: ${spacing.md}px;
 
