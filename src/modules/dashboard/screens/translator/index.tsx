@@ -68,12 +68,15 @@ export const Translator: React.FC<Props> = () => {
 
   const onSendMessage = () => {
     if (!message) return
+
     setMessages((prev) => [
       ...prev,
       { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
     ])
     setMessage("")
+
     if (Keyboard.isVisible()) Keyboard.dismiss()
+
     scrollToEnd()
   }
 
