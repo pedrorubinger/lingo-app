@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components/native"
 
 import { Theme } from "@styles/index"
+import { isAndroid } from "@utils/index"
 
 const { colors, radius, spacing, zIndex } = Theme
 
@@ -9,7 +10,7 @@ export const Box = styled.View`
   background-color: ${colors.white};
 
   position: absolute;
-  bottom: 110px;
+  bottom: ${isAndroid ? 90 : 110}px;
   left: 22px;
 
   border-radius: ${radius.sm}px;
