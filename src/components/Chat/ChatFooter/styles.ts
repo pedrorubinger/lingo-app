@@ -23,12 +23,13 @@ export const FooterContent = styled.View`
   flex-direction: row;
   align-items: center;
   gap: ${spacing.sm}px;
+  flex: 1;
 
   padding: ${spacing.sm}px 4%;
 `
 
 export const InputBox = styled.View`
-  width: 88%;
+  flex: 1;
 `
 
 export const LanguageSelectorBox = styled.View``
