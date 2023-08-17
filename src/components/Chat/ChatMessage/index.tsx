@@ -25,7 +25,7 @@ export const ChatMessage: React.FC<Props> = ({ message }) => {
     Animated.timing(animation, {
       toValue: 0,
       duration: 200,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }).start(() => {
       animation.setValue(0)
     })
