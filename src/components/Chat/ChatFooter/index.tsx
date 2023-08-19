@@ -18,14 +18,14 @@ interface LanguageSelector {
 interface Props {
   Input: React.ReactNode
   /** @default false */
-  isAwaitingResponse?: boolean
+  isLoadingMessage?: boolean
   languageSelector?: LanguageSelector
 }
 
 export const ChatFooter: React.FC<Props> = ({
   Input,
   languageSelector,
-  isAwaitingResponse = true,
+  isLoadingMessage = true,
 }) => {
   return (
     <Footer>
