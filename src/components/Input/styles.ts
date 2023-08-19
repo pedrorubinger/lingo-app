@@ -26,7 +26,10 @@ export const Box = styled.View<BoxProps>`
   align-items: center;
 `
 
-interface StyledInputProps extends Pick<BoxProps, "size"> {}
+interface StyledInputProps extends Pick<BoxProps, "size"> {
+  /** @default false */
+  isDisabled?: boolean
+}
 
 export const StyledInput = styled.TextInput.attrs({
   placeholderTextColor: colors.grey500,
@@ -34,6 +37,8 @@ export const StyledInput = styled.TextInput.attrs({
   flex: 1;
 
   margin-right: ${spacing.sm}px;
+
+  opacity: ${({ isDisabled = false }) => (isDisabled ? 0.6 : 1)};
 `
 
 interface SubmitBtnProps extends Pick<BoxProps, "size"> {}
@@ -45,4 +50,5 @@ export const SubmitBtn = styled.TouchableOpacity<SubmitBtnProps>`
   padding: ${spacing.sm}px;
 
   background-color: ${colors.green400};
+  opacity: ${({ disabled = false }) => (disabled ? 0.6 : 1)};
 `

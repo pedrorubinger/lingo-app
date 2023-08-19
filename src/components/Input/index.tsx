@@ -38,6 +38,10 @@ interface Props extends TextInputProps {
    */
   borderRadius?: RadiusName
   button?: Button
+  /**
+   * Indicates if text input and button are disabled.
+   */
+  isDisabled?: boolean
 }
 
 export const Input: React.FC<Props> = ({
@@ -48,18 +52,24 @@ export const Input: React.FC<Props> = ({
   width,
   button,
   value,
+  isDisabled = false,
   ...rest
 }) => {
   return (
     <>
       {!!label && <Typography>{label}</Typography>}
       <Box borderRadius={borderRadius} width={width} size={size}>
-        <StyledInput value={value} {...rest}>
+        <StyledInput value={value} isDisabled={isDisabled} {...rest}>
           {children}
         </StyledInput>
 
         {!!button && (
-          <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
+          <SubmitBtn
+            size={size}
+            onPress={button.onPress}
+            {...button.btnProps}
+            disabled={isDisabled}
+          >
             <Entypo name={button.icon} size={15} color={colors.white} />
           </SubmitBtn>
         )}

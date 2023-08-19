@@ -132,6 +132,7 @@ export const Translator: React.FC<Props> = () => {
         Input={
           <Input
             value={message}
+            isDisabled={isMessageLoading}
             onPressIn={onPressInput}
             onChangeText={onChangeMessage}
             placeholder={`Translate any text to ${getLanguageLabel(
