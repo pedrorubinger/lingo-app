@@ -11,11 +11,15 @@ import {
 import {
   ChatFooter,
   ChatMessage,
+  ChatMessageLoader,
   Input,
   ScreenBox,
   ScreenHeader,
 } from "@components/index"
-import { ContentBox } from "@modules/dashboard/screens/translator/styles"
+import {
+  ChatMessageLoaderBox,
+  ContentBox,
+} from "@modules/dashboard/screens/translator/styles"
 import {
   TranslatorDefinitions,
   getLanguageLabel,
@@ -28,6 +32,7 @@ export const Translator: React.FC<Props> = () => {
   const screenBoxScrollerRef = useRef<ScrollView>(null)
   const scrollerTimeout = useRef<NodeJS.Timeout | null>(null)
 
+  const [isMessageLoading, setIsMessageLoading] = useState(false)
   const [isSelectorVisible, setIsSelectorVisible] = useState(false)
   const [message, setMessage] = useState<string>("")
   const [messages, setMessages] = useState<TranslatorMessageData[]>(
@@ -60,6 +65,7 @@ export const Translator: React.FC<Props> = () => {
       ...prev,
       { origin: TranslatorMessageOrigin.APPLICATION, content, id: v4() },
     ])
+
     onCloseLanguageSelector()
     scrollToEnd()
   }
@@ -76,6 +82,12 @@ export const Translator: React.FC<Props> = () => {
     setMessage("")
 
     if (Keyboard.isVisible()) Keyboard.dismiss()
+
+    setIsMessageLoading(true)
+
+    setTimeout(() => {
+      setIsMessageLoading(false)
+    }, 3000)
 
     scrollToEnd()
   }
@@ -97,6 +109,12 @@ export const Translator: React.FC<Props> = () => {
           {messages.map((message) => {
             return <ChatMessage key={message.id} message={message} />
           })}
+
+          {!!isMessageLoading && (
+            <ChatMessageLoaderBox>
+              <ChatMessageLoader key={new Date().getTime()} />
+            </ChatMessageLoaderBox>
+          )}
         </ContentBox>
       </ScreenBox>
 
@@ -118,10 +136,7 @@ export const Translator: React.FC<Props> = () => {
             placeholder={`Translate any text to ${getLanguageLabel(
               language
             )}...`}
-            button={{
-              icon: "paper-plane",
-              onPress: onSendMessage,
-            }}
+            button={{ icon: "paper-plane", onPress: onSendMessage }}
             numberOfLines={1}
             multiline
           />
