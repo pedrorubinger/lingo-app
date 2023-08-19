@@ -8,6 +8,25 @@ export const ChatMessageLoader: React.FC = () => {
   const translateY2 = useRef(new Animated.Value(0)).current
   const translateY3 = useRef(new Animated.Value(0)).current
 
+  const transition = new Animated.Value(-100)
+  const animatedTransitionStyles = {
+    transform: [{ translateX: transition }],
+  }
+
+  const startAnimation = () => {
+    Animated.timing(transition, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => {
+      transition.setValue(0)
+    })
+  }
+
+  useEffect(() => {
+    startAnimation()
+  }, [])
+
   const animateEllipsis = () => {
     Animated.loop(
       Animated.parallel([
@@ -41,7 +60,7 @@ export const ChatMessageLoader: React.FC = () => {
   }, [])
 
   return (
-    <Box>
+    <Box style={[animatedTransitionStyles]}>
       <Dot style={{ transform: [{ translateY: translateY1 }] }}>.</Dot>
       <Dot style={{ transform: [{ translateY: translateY2 }] }}>.</Dot>
       <Dot style={{ transform: [{ translateY: translateY3 }] }}>.</Dot>
