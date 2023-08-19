@@ -8,9 +8,7 @@ import {
   LanguageSelectorBox,
   LanguageSelectorBtn,
   LanguageSelectorImg,
-  LoaderBox,
 } from "@components/Chat/ChatFooter/styles"
-import { ChatMessageLoader } from "@components/Chat/ChatMessageLoader"
 
 interface LanguageSelector {
   language: TranslatorLanguage
@@ -31,12 +29,6 @@ export const ChatFooter: React.FC<Props> = ({
 }) => {
   return (
     <Footer>
-      {!!isAwaitingResponse && (
-        <LoaderBox>
-          <ChatMessageLoader />
-        </LoaderBox>
-      )}
-
       <FooterContent>
         {!!languageSelector && (
           <LanguageSelectorBox>

@@ -48,9 +48,3 @@ export const LanguageSelectorImg = styled.Image`
   width: 24px;
   height: 24px;
 `
-
-export const LoaderBox = styled.View`
-  position: absolute;
-  top: -85px;
-  left: 25px;
-`
