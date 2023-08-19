@@ -42,6 +42,7 @@ export const LanguageSelectorBtn = styled.TouchableOpacity`
   padding: ${spacing.sm}px;
 
   background-color: ${colors.grey100};
+  opacity: ${({ disabled = false }) => (disabled ? 0.6 : 1)};
 `
 
 export const LanguageSelectorImg = styled.Image`

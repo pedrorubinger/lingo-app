@@ -127,6 +127,7 @@ export const Translator: React.FC<Props> = () => {
       )}
 
       <ChatFooter
+        isMessageLoading={isMessageLoading}
         languageSelector={{ language, onPressLanguageSelector }}
         Input={
           <Input

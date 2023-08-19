@@ -33,6 +33,7 @@ export const ChatFooter: React.FC<Props> = ({
         {!!languageSelector && (
           <LanguageSelectorBox>
             <LanguageSelectorBtn
+              disabled={isMessageLoading}
               onPress={languageSelector.onPressLanguageSelector}
             >
               <LanguageSelectorImg source={languageSelector.language.image} />
