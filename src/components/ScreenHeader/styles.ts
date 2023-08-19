@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 
 import { Theme } from "@styles/theme"
 
-const { spacing } = Theme
+const { spacing, zIndex } = Theme
 
 export const Box = styled.View`
   width: 100%;
@@ -10,6 +10,8 @@ export const Box = styled.View`
 
   flex-direction: row;
   align-items: center;
+
+  z-index: ${zIndex.max};
 `
 
 export const TouchableArrow = styled.TouchableOpacity``
