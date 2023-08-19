@@ -23,6 +23,7 @@ import {
 import {
   TranslatorDefinitions,
   getLanguageLabel,
+  isEmptyOrOnlyNewlines,
 } from "@modules/dashboard/utils"
 import { TranslatorLanguagesDropdown } from "@modules/dashboard/components"
 
@@ -73,7 +74,7 @@ export const Translator: React.FC<Props> = () => {
   const onPressInput = () => onCloseLanguageSelector()
 
   const onSendMessage = () => {
-    if (!message) return
+    if (isEmptyOrOnlyNewlines(message)) return
 
     setMessages((prev) => [
       ...prev,
