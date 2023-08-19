@@ -10,7 +10,7 @@ export const ContentBox = styled.View`
 
   flex: 1;
   flex-direction: column;
-  gap: ${spacing.md}px;
+  gap: ${spacing.sm}px;
 `
 
 export const ChatMessageLoaderBox = styled.View`
