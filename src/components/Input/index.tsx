@@ -64,12 +64,7 @@ export const Input: React.FC<Props> = ({
         </StyledInput>
 
         {!!button && (
-          <SubmitBtn
-            size={size}
-            onPress={button.onPress}
-            {...button.btnProps}
-            disabled={isDisabled}
-          >
+          <SubmitBtn size={size} onPress={button.onPress} {...button.btnProps}>
             <Entypo name={button.icon} size={15} color={colors.white} />
           </SubmitBtn>
         )}

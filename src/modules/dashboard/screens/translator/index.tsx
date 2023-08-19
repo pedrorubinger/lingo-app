@@ -139,7 +139,11 @@ export const Translator: React.FC<Props> = () => {
             placeholder={`Translate any text to ${getLanguageLabel(
               language
             )}...`}
-            button={{ icon: "paper-plane", onPress: onSendMessage }}
+            button={{
+              icon: "paper-plane",
+              onPress: onSendMessage,
+              btnProps: { disabled: isMessageLoading },
+            }}
             numberOfLines={1}
             multiline
           />
