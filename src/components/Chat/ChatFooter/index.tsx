@@ -10,7 +10,7 @@ import {
   LanguageSelectorImg,
   LoaderBox,
 } from "@components/Chat/ChatFooter/styles"
-import { ChatMessageLoader } from "@components/Chat"
+import { ChatMessageLoader } from "@components/Chat/ChatMessageLoader"
 
 interface LanguageSelector {
   language: TranslatorLanguage
