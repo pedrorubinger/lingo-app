@@ -10,7 +10,8 @@
       "@components/*": ["./src/components/*"],
       "@modules/*": ["./src/modules/*"],
       "@routes/*": ["./src/routes/*"],
-      "@interfaces/*": ["./src/interfaces/*"]
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@services/*": ["./src/services/*"]
     }
   }
 }
