@@ -20,6 +20,7 @@ import {
   ChatMessageLoaderBox,
   ContentBox,
 } from "@modules/dashboard/screens/translator/styles"
+import { useCreateTranslationRequest } from "@modules/dashboard/hooks"
 import {
   TranslatorDefinitions,
   getLanguageLabel,
@@ -32,8 +33,8 @@ interface Props extends DashboardStackScreenProps<"Translator"> {}
 export const Translator: React.FC<Props> = () => {
   const screenBoxScrollerRef = useRef<ScrollView>(null)
   const scrollerTimeout = useRef<NodeJS.Timeout | null>(null)
+  const { isLoading: isMessageLoading, submit } = useCreateTranslationRequest()
 
-  const [isMessageLoading, setIsMessageLoading] = useState(false)
   const [isSelectorVisible, setIsSelectorVisible] = useState(false)
   const [message, setMessage] = useState<string>("")
   const [messages, setMessages] = useState<TranslatorMessageData[]>(
@@ -73,7 +74,7 @@ export const Translator: React.FC<Props> = () => {
 
   const onPressInput = () => onCloseLanguageSelector()
 
-  const onSendMessage = () => {
+  const onSendMessage = async () => {
     if (isEmptyOrOnlyNewlines(message)) return
 
     setMessages((prev) => [
@@ -84,11 +85,24 @@ export const Translator: React.FC<Props> = () => {
 
     if (Keyboard.isVisible()) Keyboard.dismiss()
 
-    setIsMessageLoading(true)
+    const { data, error } = await submit({
+      language: language.name,
+      sentence: message,
+    })
 
-    setTimeout(() => {
-      setIsMessageLoading(false)
-    }, 3000)
+    /* TO DO: Handle error properly... */
+    if (error) return
+
+    if (data) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          origin: TranslatorMessageOrigin.APPLICATION,
+          content: data.message,
+          id: v4(),
+        },
+      ])
+    }
 
     scrollToEnd()
   }

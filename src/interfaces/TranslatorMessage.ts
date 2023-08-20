@@ -8,3 +8,10 @@ export interface TranslatorMessageData {
   content: string
   origin: TranslatorMessageOrigin
 }
+
+export interface CreateTranslationResponse {
+  /**
+   * Translated message.
+   */
+  message: string
+}
