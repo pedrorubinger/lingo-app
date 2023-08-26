@@ -86,7 +86,7 @@ export const TranslatorDefinitions: TranslatorDefinitions = {
   INITIAL_MESSAGES: [
     {
       id: v4(),
-      content: `Hi, There!\n\nI will translate every sentence or text from any language into ${
+      content: `Hi, there!\n\nI will translate every sentence or text from any language into ${
         TranslatorLanguageNameLabel[TranslatorLanguageName[LANGUAGES[0].name]]
       }. You can change the target language by clicking on the country flag next to the text box.`,
       origin: TranslatorMessageOrigin.APPLICATION,
