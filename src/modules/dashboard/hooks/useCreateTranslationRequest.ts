@@ -6,6 +6,7 @@ import {
   TranslatorLanguageName,
 } from "@interfaces/index"
 import { Api } from "@services/api"
+import { handleError } from "@utils/helpers/errors"
 
 interface SubmitParams {
   sentence: string
@@ -37,8 +38,7 @@ export const useCreateTranslationRequest = (): Response => {
 
       return { data, error: null }
     } catch (error: any) {
-      /* TO DO: Handle errors properly. */
-      return { data: null, error: "Something went wrong." }
+      return { data: null, error: handleError(error) }
     } finally {
       setIsLoading(false)
     }

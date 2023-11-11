@@ -1,3 +1,5 @@
+import { AxiosError } from "axios"
+
 export enum ErrorCode {
   BAD_REQUEST = "BAD_REQUEST",
   INTERNAL = "INTERNAL_SERVER_ERROR",
@@ -24,4 +26,11 @@ export interface ApiError {
   status: number
   type: ApiErrorType
   errors?: ApiValidationError[] | null
+}
+
+export interface HandledError {
+  plain?: AxiosError | any
+  api?: ApiError | null
+  handled: boolean
+  message: string
 }

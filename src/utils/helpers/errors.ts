@@ -1,13 +1,11 @@
 import { AxiosError } from "axios"
 
-import { ApiError, ErrorCode, ApiErrorType } from "@interfaces/Error"
-
-interface HandledError {
-  plain?: AxiosError | any
-  api?: ApiError | null
-  handled: boolean
-  message: string
-}
+import {
+  ApiError,
+  ErrorCode,
+  ApiErrorType,
+  HandledError,
+} from "@interfaces/Error"
 
 type ErrorParam = AxiosError | HandledError | any
 

@@ -1,4 +1,6 @@
+import { HandledError } from "@interfaces/Error"
+
 export interface ApiHandlerResponse<T> {
   data?: T | null
-  error?: string | null
+  error?: HandledError | null
 }
