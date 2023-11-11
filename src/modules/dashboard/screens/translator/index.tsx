@@ -90,8 +90,19 @@ export const Translator: React.FC<Props> = () => {
       sentence: message,
     })
 
-    /* TO DO: Handle error properly... */
-    if (error) return
+    scrollToEnd()
+
+    /* TO DO: Customize error message color, icons etc... */
+    if (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          origin: TranslatorMessageOrigin.APPLICATION,
+          content: error.message,
+          id: v4(),
+        },
+      ])
+    }
 
     if (data) {
       setMessages((prev) => [
@@ -103,8 +114,6 @@ export const Translator: React.FC<Props> = () => {
         },
       ])
     }
-
-    scrollToEnd()
   }
 
   const onChangeMessage = (text: string) => setMessage(text)
