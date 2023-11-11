@@ -1,7 +1,8 @@
 import Axios, { AxiosError, AxiosHeaders, AxiosRequestConfig } from "axios"
 
-export const API_BASE_URL: string = process.env
-  .EXPO_PUBLIC_API_BASE_URL as string
+import { handleError } from "@utils/helpers/errors"
+
+const API_BASE_URL: string = process.env.EXPO_PUBLIC_API_BASE_URL as string
 export const Api = Axios.create({ baseURL: API_BASE_URL })
 
 Api.interceptors.request.use((config: AxiosRequestConfig) => {
@@ -15,7 +16,7 @@ Api.interceptors.request.use((config: AxiosRequestConfig) => {
 
 Api.interceptors.response.use(
   (response) => response,
-  async (error: AxiosError) => {
-    return Promise.reject(error)
+  async (error: AxiosError | unknown) => {
+    return Promise.reject(handleError(error))
   }
 )
