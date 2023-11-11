@@ -6,6 +6,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "assets": ["./assets/fonts/"]
+    "assets": [
+      "./assets/fonts/"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3bd6d540-913e-49a2-b670-e328b3bb9738"
+      }
+    }
   }
 }

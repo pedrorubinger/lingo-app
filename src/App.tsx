@@ -4,6 +4,7 @@ import { useFonts } from "expo-font"
 import { ThemeProvider } from "styled-components/native"
 import { NavigationContainer } from "@react-navigation/native"
 import "react-native-get-random-values"
+import "expo-dev-client"
 
 import { Theme } from "@styles/index"
 import { Routes } from "@routes/index.routes"
