@@ -6,7 +6,7 @@ import {
 } from "react-native"
 import { Entypo } from "@expo/vector-icons"
 
-import { InputSizeName, RadiusName, Theme } from "@styles/index"
+import { ColorName, InputSizeName, RadiusName, Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
 import { Box, StyledInput, SubmitBtn } from "@components/Input/styles"
 
@@ -42,6 +42,10 @@ interface Props extends TextInputProps {
    * Indicates if text input and button are disabled.
    */
   isDisabled?: boolean
+  /**
+   * Indicates the input text color.
+   */
+  color?: ColorName
 }
 
 export const Input: React.FC<Props> = ({
@@ -52,6 +56,7 @@ export const Input: React.FC<Props> = ({
   width,
   button,
   value,
+  color,
   isDisabled = false,
   ...rest
 }) => {
@@ -59,7 +64,13 @@ export const Input: React.FC<Props> = ({
     <>
       {!!label && <Typography>{label}</Typography>}
       <Box borderRadius={borderRadius} width={width} size={size}>
-        <StyledInput value={value} isDisabled={isDisabled} {...rest}>
+        <StyledInput
+          value={value}
+          color={color}
+          isDisabled={isDisabled}
+          size={size}
+          {...rest}
+        >
           {children}
         </StyledInput>
 

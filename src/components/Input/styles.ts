@@ -1,6 +1,14 @@
 import styled from "styled-components/native"
 
-import { InputSize, InputSizeName, RadiusName, Theme } from "@styles/index"
+import {
+  ColorName,
+  Colors,
+  InputSize,
+  InputSizeName,
+  Radius,
+  RadiusName,
+  Theme,
+} from "@styles/index"
 
 const { colors, radius, spacing, inputSize } = Theme
 
@@ -18,7 +26,8 @@ export const Box = styled.View<BoxProps>`
     InputSize[size as keyof typeof InputSize]?.fontSize ??
     inputSize.md.fontSize}px;
 
-  border-radius: ${({ borderRadius = radius.lg }) => borderRadius}px;
+  border-radius: ${({ borderRadius = "lg" }) =>
+    radius[borderRadius as keyof typeof Radius]}px;
   background-color: ${colors.blue80};
 
   flex-direction: row;
@@ -29,6 +38,7 @@ export const Box = styled.View<BoxProps>`
 interface StyledInputProps extends Pick<BoxProps, "size"> {
   /** @default false */
   isDisabled?: boolean
+  color?: ColorName
 }
 
 export const StyledInput = styled.TextInput.attrs({
@@ -38,7 +48,12 @@ export const StyledInput = styled.TextInput.attrs({
 
   margin-right: ${spacing.sm}px;
 
+  padding: ${({ size }) =>
+    size ? InputSize[size as keyof typeof InputSize]?.padding : 0}px;
+
   opacity: ${({ isDisabled = false }) => (isDisabled ? 0.6 : 1)};
+
+  color: ${({ color = "grey700" }) => colors[color as keyof typeof Colors]};
 `
 
 interface SubmitBtnProps extends Pick<BoxProps, "size"> {}
