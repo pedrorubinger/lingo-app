@@ -4,7 +4,7 @@ export const serviceCards: ServiceCardData[] = [
   {
     id: 1,
     title: "Translator",
-    sub: "All languages",
+    sub: "9 languages available",
     width: "48%",
     path: "Translator",
     status: ServiceCardStatus.DEFAULT,
