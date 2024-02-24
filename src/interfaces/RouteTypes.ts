@@ -2,14 +2,15 @@ import { NavigatorScreenParams } from "@react-navigation/native"
 import { StackScreenProps } from "@react-navigation/stack"
 
 import {
+  AuthStackParamList,
   DashboardStackParamList,
   NavigatorStackParamList,
 } from "@interfaces/StackParamsList"
 
 export type RootStackParamList = {
   /* Stacks */
+  AuthStack: NavigatorScreenParams<AuthStackParamList>
   DashboardStack: NavigatorScreenParams<DashboardStackParamList>
-  /* Navigators */
   TabNavigator: NavigatorScreenParams<NavigatorStackParamList>
 }
 
