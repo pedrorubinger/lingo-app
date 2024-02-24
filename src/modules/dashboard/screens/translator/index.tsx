@@ -7,6 +7,7 @@ import {
   TranslatorLanguage,
   TranslatorMessageData,
   TranslatorMessageOrigin,
+  TranslatorMessageType,
 } from "@interfaces/index"
 import {
   ChatFooter,
@@ -65,7 +66,12 @@ export const Translator: React.FC<Props> = () => {
     setLanguage(newLanguage)
     setMessages((prev) => [
       ...prev,
-      { origin: TranslatorMessageOrigin.APPLICATION, content, id: v4() },
+      {
+        origin: TranslatorMessageOrigin.APPLICATION,
+        type: TranslatorMessageType.DEFAULT,
+        content,
+        id: v4(),
+      },
     ])
 
     onCloseLanguageSelector()
@@ -79,7 +85,12 @@ export const Translator: React.FC<Props> = () => {
 
     setMessages((prev) => [
       ...prev,
-      { origin: TranslatorMessageOrigin.USER, content: message, id: v4() },
+      {
+        type: TranslatorMessageType.DEFAULT,
+        origin: TranslatorMessageOrigin.USER,
+        content: message,
+        id: v4(),
+      },
     ])
     setMessage("")
 
@@ -92,12 +103,12 @@ export const Translator: React.FC<Props> = () => {
 
     scrollToEnd()
 
-    /* TO DO: Customize error message color, icons etc... */
     if (error) {
       setMessages((prev) => [
         ...prev,
         {
           origin: TranslatorMessageOrigin.APPLICATION,
+          type: TranslatorMessageType.ERROR,
           content: error.message,
           id: v4(),
         },
@@ -109,6 +120,7 @@ export const Translator: React.FC<Props> = () => {
         ...prev,
         {
           origin: TranslatorMessageOrigin.APPLICATION,
+          type: TranslatorMessageType.DEFAULT,
           content: data.message,
           id: v4(),
         },

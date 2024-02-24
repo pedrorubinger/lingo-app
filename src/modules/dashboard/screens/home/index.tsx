@@ -9,7 +9,6 @@ import {
 import {
   Body,
   CardsBox,
-  CardsTitleBox,
   CarouselTitleBox,
 } from "@modules/dashboard/screens/home/styles"
 
@@ -23,12 +22,6 @@ export const Home: React.FC<Props> = () => {
       <HomeHeader name="Pedro" />
 
       <Body>
-        <CardsTitleBox>
-          <Typography font="lg4" color="koamaru300">
-            Services
-          </Typography>
-        </CardsTitleBox>
-
         {serviceChunks.map((chunk, i) => {
           return (
             <CardsBox isFirstBox={i === 0} key={i}>

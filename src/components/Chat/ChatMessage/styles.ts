@@ -9,16 +9,23 @@ const { colors, spacing, radius } = Theme
 
 interface MessageBoxProps {
   origin: TranslatorMessageOrigin
+  isError: boolean
+}
+
+type GetBgColorProps = MessageBoxProps
+
+const getBgColor = ({ origin, isError }: GetBgColorProps) => {
+  if (isError) return colors.red400
+  if (origin === TranslatorMessageOrigin.APPLICATION) return colors.grey200
+
+  return colors.green400
 }
 
 export const MessageBox = styled(Animated.View)<MessageBoxProps>`
   max-width: 80%;
   padding: ${spacing.md}px;
 
-  background-color: ${({ origin }) =>
-    origin === TranslatorMessageOrigin.APPLICATION
-      ? colors.grey200
-      : colors.green400};
+  background-color: ${({ origin, isError }) => getBgColor({ origin, isError })};
   border: 1px solid ${colors.grey100};
   border-radius: ${radius.lg}px;
 
@@ -28,11 +35,18 @@ export const MessageBox = styled(Animated.View)<MessageBoxProps>`
 
 interface MessageTypographyProps {
   origin: TranslatorMessageOrigin
+  isError: boolean
+}
+
+type GetTextColorProps = MessageTypographyProps
+
+const getTextColor = ({ origin, isError }: GetTextColorProps) => {
+  if (isError) return colors.white
+  if (origin === TranslatorMessageOrigin.APPLICATION) return colors.grey700
+
+  return colors.white
 }
 
 export const MessageTypography = styled(Typography)<MessageTypographyProps>`
-  color: ${({ origin }) =>
-    origin === TranslatorMessageOrigin.APPLICATION
-      ? colors.grey700
-      : colors.white};
+  color: ${({ origin, isError }) => getTextColor({ origin, isError })};
 `
