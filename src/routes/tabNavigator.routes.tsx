@@ -46,22 +46,22 @@ export const TabNavigator: React.FC<Props> = () => {
         }}
       />
       <Tab.Screen
-        name="HelpCenter"
-        component={HelpCenter}
-        options={{
-          tabBarLabel: "Help Center",
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="help-with-circle" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Account"
         component={Account}
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="user" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="HelpCenter"
+        component={HelpCenter}
+        options={{
+          tabBarLabel: "Help Center",
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="help-with-circle" color={color} size={size} />
           ),
         }}
       />
