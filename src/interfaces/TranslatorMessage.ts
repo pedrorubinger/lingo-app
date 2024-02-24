@@ -3,10 +3,16 @@ export enum TranslatorMessageOrigin {
   USER = "USER",
 }
 
+export enum TranslatorMessageType {
+  DEFAULT = "DEFAULT",
+  ERROR = "ERROR",
+}
+
 export interface TranslatorMessageData {
   id: string
   content: string
   origin: TranslatorMessageOrigin
+  type: TranslatorMessageType
 }
 
 export interface CreateTranslationResponse {
