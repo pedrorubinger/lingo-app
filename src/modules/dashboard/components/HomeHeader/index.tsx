@@ -21,9 +21,9 @@ export const HomeHeader: React.FC<Props> = ({ name }) => {
     <Box>
       <MessageBox>
         <Typography color="grey300" font="md2">
-          Welcome,
+          Hello,
         </Typography>
-        <Typography color="koamaru300" font="xxl4">
+        <Typography color="koamaru300" font="xl4">
           {label}
         </Typography>
       </MessageBox>
