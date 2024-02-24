@@ -25,6 +25,6 @@ export const CardsTitleBox = styled.View`
 `
 
 export const CarouselTitleBox = styled.View`
-  margin-top: ${spacing.xxl}px;
+  margin-top: ${spacing.xl}px;
   margin-bottom: ${spacing.xl}px;
 `
