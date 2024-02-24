@@ -13,6 +13,8 @@ export const Box = styled.View`
   justify-content: space-between;
 `
 
-export const MessageBox = styled.View``
+export const MessageBox = styled.View`
+  margin-top: ${spacing.sm}px;
+`
 
 export const TouchableMenu = styled.TouchableOpacity``
