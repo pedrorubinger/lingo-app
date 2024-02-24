@@ -7,6 +7,7 @@ import {
   TranslatorLanguageNameLabel,
   TranslatorMessageData,
   TranslatorMessageOrigin,
+  TranslatorMessageType,
 } from "@interfaces/index"
 
 interface TranslatorDefinitions {
@@ -90,6 +91,7 @@ export const TranslatorDefinitions: TranslatorDefinitions = {
         TranslatorLanguageNameLabel[TranslatorLanguageName[LANGUAGES[0].name]]
       }. You can change the target language by clicking on the country flag next to the text box.`,
       origin: TranslatorMessageOrigin.APPLICATION,
+      type: TranslatorMessageType.DEFAULT,
     },
   ],
   AVAILABLE_LANGUAGES_COUNT: LANGUAGES.length,
