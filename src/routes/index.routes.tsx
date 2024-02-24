@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 import { RootStackParamList } from "@interfaces/RouteTypes"
+import { TabNavigator } from "@routes/tabNavigator.routes"
 import { DashboardStack } from "@modules/dashboard/screens"
 
 interface Props {}
@@ -10,9 +11,10 @@ export const Routes: React.FC<Props> = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="DashboardStack"
+      initialRouteName="TabNavigator"
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="DashboardStack" component={DashboardStack} />
     </Stack.Navigator>
   )

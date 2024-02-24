@@ -6,7 +6,7 @@ import { StackNavigationProp } from "@react-navigation/stack"
 import {
   ServiceCardStatus,
   RootStackParamList,
-  DashboardStackParamList,
+  NavigatorStackParamList,
 } from "@interfaces/index"
 import { Theme } from "@styles/index"
 import { Typography } from "@components/Typography"
@@ -31,7 +31,7 @@ interface Props {
   sub: string
   /** @default DEFAULT */
   status?: ServiceCardStatus
-  screen: keyof DashboardStackParamList
+  screen: keyof NavigatorStackParamList
 }
 
 export const ServiceCard: React.FC<Props> = ({
@@ -46,7 +46,7 @@ export const ServiceCard: React.FC<Props> = ({
   const isDisabled = currentStatus === ServiceCardStatus.DISABLED
 
   const onPressCard = () => {
-    navigation.navigate("DashboardStack", { screen })
+    navigation.navigate("TabNavigator", { screen })
   }
 
   return (
