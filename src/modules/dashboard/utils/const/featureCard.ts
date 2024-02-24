@@ -4,7 +4,7 @@ import { TranslatorDefinitions } from "@modules/dashboard/utils/const/translator
 export const featureCards: FeatureCardData[] = [
   {
     source: require("@assets/images/glasses.jpg"),
-    text: `Translate texts into more than ${TranslatorDefinitions.AVAILABLE_LANGUAGES_COUNT} languages`,
+    text: `Translate texts into ${TranslatorDefinitions.AVAILABLE_LANGUAGES_COUNT} languages`,
   },
   {
     source: require("@assets/images/kindle.jpg"),
