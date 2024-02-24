@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react"
-import { Animated } from "react-native"
+import { Animated, TouchableWithoutFeedback, View } from "react-native"
 
 import { Theme } from "@styles/theme"
 import { InputSizeName } from "@styles/input"
 import {
   ContentBox,
+  ForgotPasswordBox,
   InputBox,
   SignInBox,
 } from "@modules/auth/screens/signIn/styles"
@@ -32,6 +33,8 @@ export const SignIn: React.FC<Props> = () => {
     color: "grey500",
   }
 
+  const onPressForgotPassword = () => {}
+
   useEffect(() => {
     Animated.timing(opacity, {
       toValue: 1,
@@ -58,6 +61,14 @@ export const SignIn: React.FC<Props> = () => {
             />
             <Input {...variant} inputMode="text" placeholder="Password" />
           </InputBox>
+
+          <ForgotPasswordBox>
+            <TouchableWithoutFeedback onPress={onPressForgotPassword}>
+              <Typography font="xs1" color="primary">
+                Forgot password?
+              </Typography>
+            </TouchableWithoutFeedback>
+          </ForgotPasswordBox>
         </ContentBox>
       </SignInBox>
     </ScreenBox>

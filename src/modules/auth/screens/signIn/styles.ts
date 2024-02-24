@@ -11,7 +11,7 @@ export const SignInBox = styled(Animated.View)<SignInBoxProps>`
   display: flex;
   align-items: center;
 
-  height: 200px;
+  height: 220px;
 `
 
 export const ContentBox = styled.View`
@@ -26,4 +26,10 @@ export const InputBox = styled.View`
   width: 100%;
 
   gap: ${spacing.md}px;
+`
+
+export const ForgotPasswordBox = styled.View`
+  width: 100%;
+  align-items: flex-end;
+  margin-top: ${spacing.md}px;
 `
