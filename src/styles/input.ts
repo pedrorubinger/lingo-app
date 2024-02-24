@@ -2,7 +2,7 @@ import { Fonts } from "@styles/fonts"
 import { Spacing } from "@styles/spacing"
 
 export const InputSize = {
-  md: { fontSize: Fonts.sm1.fontSize, padding: Spacing.md },
+  md: { fontSize: Fonts.sm1.fontSize, padding: Spacing.sm },
 } as const
 
 export type InputSizeName = keyof typeof InputSize
