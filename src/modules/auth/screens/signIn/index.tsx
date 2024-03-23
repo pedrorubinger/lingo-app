@@ -29,7 +29,7 @@ interface InputVariant {
 
 export const SignIn: React.FC<Props> = () => {
   const opacity = useRef(new Animated.Value(0)).current
-  const variant: InputVariant = {
+  const inputVariant: InputVariant = {
     size: "md",
     borderRadius: "md",
     color: "grey500",
@@ -65,13 +65,13 @@ export const SignIn: React.FC<Props> = () => {
 
           <InputBox>
             <Input
-              {...variant}
+              {...inputVariant}
               keyboardType="email-address"
               inputMode="email"
               placeholder="Email"
               autoFocus
             />
-            <Input {...variant} inputMode="text" placeholder="Password" />
+            <Input {...inputVariant} inputMode="text" placeholder="Password" />
           </InputBox>
 
           <ForgotPasswordBox>
