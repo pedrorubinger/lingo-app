@@ -11,11 +11,16 @@ import {
   SignInBox,
 } from "@modules/auth/screens/signIn/styles"
 import Logo from "@assets/images/logo/svg/default.svg"
-import { AuthStackScreenProps } from "@interfaces/index"
+import { AuthStackScreenProps, RootStackParamList } from "@interfaces/index"
 import { Input, ScreenBox, Typography } from "@components/index"
 import { RadiusName } from "@styles/radius"
 import { ColorName } from "@styles/colors"
 import { Button } from "@components/Button"
+import { useNavigation } from "@react-navigation/native"
+import { StackNavigationProp } from "@react-navigation/stack"
+import { useAuthStore } from "@store/auth"
+import { User } from "@interfaces/User"
+import { storeAuthToken } from "@utils/helpers/auth"
 
 const { colors, spacing } = Theme
 
@@ -27,15 +32,33 @@ interface InputVariant {
   color: ColorName
 }
 
+const inputVariant: InputVariant = {
+  size: "md",
+  borderRadius: "md",
+  color: "grey500",
+}
+
 export const SignIn: React.FC<Props> = () => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
   const opacity = useRef(new Animated.Value(0)).current
-  const inputVariant: InputVariant = {
-    size: "md",
-    borderRadius: "md",
-    color: "grey500",
+  const { setUser } = useAuthStore()
+
+  const onSignInSuccessfully = async (user: User) => {
+    setUser(user)
+
+    await storeAuthToken({ token: `dummy-token-${new Date().toISOString()}` })
+
+    navigation.navigate("TabNavigator", { screen: "Home" })
   }
 
   const onPressForgotPassword = () => {}
+
+  const onPressSignIn = async () => {
+    await onSignInSuccessfully({
+      name: "Pedro",
+      email: "pedro.rubinger@gmail.com",
+    })
+  }
 
   useEffect(() => {
     Animated.timing(opacity, {
@@ -83,7 +106,7 @@ export const SignIn: React.FC<Props> = () => {
           </ForgotPasswordBox>
 
           <ButtonBox>
-            <Button text="Sign In" />
+            <Button onPress={onPressSignIn} text="Sign In" />
           </ButtonBox>
         </SignInBox>
       </ScreenBox>

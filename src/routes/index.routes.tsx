@@ -4,11 +4,14 @@ import { RootStackParamList } from "@interfaces/RouteTypes"
 import { TabNavigator } from "@routes/tabNavigator.routes"
 import { DashboardStack } from "@modules/dashboard/screens"
 import { AuthStack } from "@modules/auth/screens"
+import { useAuthStore } from "@store/auth"
 
 interface Props {}
 
 export const Routes: React.FC<Props> = () => {
-  const isLoggedIn = false
+  const { user } = useAuthStore()
+
+  const isLoggedIn = !!user
   const Stack = createNativeStackNavigator<RootStackParamList>()
 
   if (isLoggedIn) {
