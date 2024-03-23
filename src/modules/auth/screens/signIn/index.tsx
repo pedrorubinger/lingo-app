@@ -58,6 +58,7 @@ export const SignIn: React.FC<Props> = () => {
               keyboardType="email-address"
               inputMode="email"
               placeholder="Enter your e-mail"
+              autoFocus
             />
             <Input {...variant} inputMode="text" placeholder="Password" />
           </InputBox>
