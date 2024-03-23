@@ -9,17 +9,14 @@ interface SignInBoxProps {}
 
 export const SignInBox = styled(Animated.View)<SignInBoxProps>`
   display: flex;
+  flex: 1;
   align-items: center;
-
-  height: 220px;
 `
 
-export const ContentBox = styled.View`
-  width: 100%;
-  height: 100%;
+export const LogoBox = styled.View`
+  align-items: center;
 
-  display: flex;
-  justify-content: flex-end;
+  margin-bottom: ${spacing.xxl}px;
 `
 
 export const InputBox = styled.View`
@@ -32,4 +29,10 @@ export const ForgotPasswordBox = styled.View`
   width: 100%;
   align-items: flex-end;
   margin-top: ${spacing.md}px;
+`
+
+export const ButtonBox = styled.View`
+  flex: 1;
+  justify-content: flex-end;
+  width: 100%;
 `

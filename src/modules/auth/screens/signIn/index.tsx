@@ -4,9 +4,10 @@ import { Animated, TouchableWithoutFeedback, View } from "react-native"
 import { Theme } from "@styles/theme"
 import { InputSizeName } from "@styles/input"
 import {
-  ContentBox,
+  ButtonBox,
   ForgotPasswordBox,
   InputBox,
+  LogoBox,
   SignInBox,
 } from "@modules/auth/screens/signIn/styles"
 import Logo from "@assets/images/logo/svg/default.svg"
@@ -14,8 +15,9 @@ import { AuthStackScreenProps } from "@interfaces/index"
 import { Input, ScreenBox, Typography } from "@components/index"
 import { RadiusName } from "@styles/radius"
 import { ColorName } from "@styles/colors"
+import { Button } from "@components/Button"
 
-const { colors } = Theme
+const { colors, spacing } = Theme
 
 interface Props extends AuthStackScreenProps<"SignIn"> {}
 
@@ -44,20 +46,29 @@ export const SignIn: React.FC<Props> = () => {
   }, [opacity])
 
   return (
-    <ScreenBox style={{ backgroundColor: colors.grey150 }}>
-      <SignInBox style={{ opacity }}>
-        <Logo width={200} height={200} />
-        <Typography color="grey500" font="md1" style={{ marginTop: -20 }}>
-          Welcome! Sign in to access your account
-        </Typography>
+    <>
+      <ScreenBox
+        style={{ backgroundColor: colors.grey150 }}
+        scrollViewProps={{ contentContainerStyle: { flexGrow: 1 } }}
+      >
+        <SignInBox style={{ opacity }}>
+          <LogoBox>
+            <Logo width={200} height={200} />
+            <Typography
+              color="grey500"
+              font="md1"
+              style={{ marginTop: -spacing.md }}
+            >
+              Welcome! Sign in to access your account
+            </Typography>
+          </LogoBox>
 
-        <ContentBox>
           <InputBox>
             <Input
               {...variant}
               keyboardType="email-address"
               inputMode="email"
-              placeholder="Enter your e-mail"
+              placeholder="Email"
               autoFocus
             />
             <Input {...variant} inputMode="text" placeholder="Password" />
@@ -70,8 +81,12 @@ export const SignIn: React.FC<Props> = () => {
               </Typography>
             </TouchableWithoutFeedback>
           </ForgotPasswordBox>
-        </ContentBox>
-      </SignInBox>
-    </ScreenBox>
+
+          <ButtonBox>
+            <Button text="Sign In" />
+          </ButtonBox>
+        </SignInBox>
+      </ScreenBox>
+    </>
   )
 }
